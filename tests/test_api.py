@@ -61,3 +61,17 @@ def test_one_inflight_action_per_run(client):
     api.active.add(r["id"])
     response = client.post(f'/runs/{r["id"]}/advance', headers=headers("researcher"), json={"continuous": False})
     assert response.status_code == 409
+
+
+def test_background_initialization_error_is_visible_and_releases_run(client, monkeypatch):
+    import asyncio
+    r = client.post("/runs", headers=headers("researcher"), json={"request": "Read RRF"}).json()
+    def unavailable(*args):
+        raise RuntimeError("Provider credentials not configured")
+    monkeypatch.setattr(api, "Engine", unavailable)
+    api.active.add(r["id"])
+    asyncio.run(api.execute(r["id"], False))
+    result = api.store.run(r["id"])
+    assert result["status"] == "error"
+    assert "credentials not configured" in result["state"]["error"]
+    assert r["id"] not in api.active

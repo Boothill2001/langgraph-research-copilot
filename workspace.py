@@ -241,7 +241,9 @@ with monitoring:
         try:
             m=api('/monitoring');runs=m['runs'];events=m['events'];calls=m['calls']
             a,b,c=st.columns(3)
-            a.metric('Runs',len(runs));b.metric('Completed',sum(r['status']=='completed' for r in runs));c.metric('Estimated API cost',f"${sum(x['cost'] or x['reserved'] for x in calls):.4f}")
+            a.metric('Runs',len(runs));b.metric('Completed',sum(r['status']=='completed' for r in runs));c.metric('Estimated API cost',f"${sum(x['cost'] if x['cost'] is not None else x['reserved'] for x in calls):.4f}")
+            if m.get('metrics'):
+                st.dataframe([{'metric': k, 'value': v} for k,v in m['metrics'].items()],hide_index=True,width='stretch')
             times={}
             for e in events: times.setdefault(e['node'],[]).append(e['elapsed_ms'])
             st.dataframe([{'node':k,'executions':len(v),'p95_ms':sorted(v)[max(0,int(.95*(len(v)-1)))]} for k,v in times.items()],hide_index=True,width='stretch')

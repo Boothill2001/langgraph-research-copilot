@@ -97,6 +97,9 @@ async def execute(rid, continuous, resume=None):
             await engine.run_until_pause(rid, resume)
         else:
             await engine.advance(rid, resume)
+    except Exception as exc:
+        r = store.run(rid)
+        store.update(rid, "error", {**r["state"], "error": type(exc).__name__ + ": " + str(exc)[:500]})
     finally:
         active.discard(rid)
 
@@ -182,4 +185,14 @@ def monitoring(user=Depends(principal)):
         rows = [dict(r) for r in c.execute("SELECT id,status,strategy,state FROM runs WHERE workspace=?", (user["workspace"],))]
         events = [dict(r) for r in c.execute("SELECT run_id,node,elapsed_ms,output FROM events") if r["run_id"] in ids]
         calls = [dict(r) for r in c.execute("SELECT run_id,status,cost,reserved,usage FROM api_calls") if r["run_id"] in ids]
-    return {"scope": "Measured local executions, not production traffic", "runs": rows, "events": events, "calls": calls}
+        decisions = [dict(r) for r in c.execute("SELECT a.run_id,a.approved FROM approvals a JOIN runs r ON r.id=a.run_id WHERE r.workspace=?", (user["workspace"],))]
+    outputs = [json.loads(e["output"]) for e in events]
+    tool_outputs = [json.loads(e["output"]).get("observations", [])[-1] for e in events
+                    if e["node"] == "tools" and json.loads(e["output"]).get("observations")]
+    metrics = {"evidence_rejections": sum(o.get("status") == "insufficient_evidence" for o in tool_outputs),
+               "permission_denials": sum(o.get("status") == "forbidden" for o in tool_outputs),
+               "approved": sum(bool(d["approved"]) for d in decisions), "rejected": sum(not d["approved"] for d in decisions),
+               "node_errors": sum(bool(o.get("error")) and o.get("error") != "GraphInterrupt" for o in outputs),
+               "input_tokens": sum(json.loads(c["usage"]).get("prompt_tokens", 0) for c in calls),
+               "output_tokens": sum(json.loads(c["usage"]).get("completion_tokens", 0) for c in calls)}
+    return {"scope": "Measured local executions, not production traffic", "runs": rows, "events": events, "calls": calls, "metrics": metrics}
