@@ -1,0 +1,4215 @@
+{
+  "notice": "Recorded real DeepSeek + MCP + authorized retrieval run. Content/source text is represented by hashes in the public replay; inspect full text in authenticated local live runs.",
+  "run": {
+    "id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+    "owner": "researcher",
+    "workspace": "research",
+    "request": "Find how RRF combines rankings in source rrf, calculate 1/(60+1) + 1/(60+3), and save a short research report.",
+    "strategy": "langgraph",
+    "status": "completed",
+    "state": {
+      "run_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+      "request": "Find how RRF combines rankings in source rrf, calculate 1/(60+1) + 1/(60+3), and save a short research report.",
+      "owner": "researcher",
+      "strategy": "langgraph",
+      "spec": {
+        "query": "How does RRF combine rankings?",
+        "source_id": "rrf",
+        "needs_search": true,
+        "needs_calculation": true,
+        "expression": "1/(60+1) + 1/(60+3)",
+        "wants_report": true,
+        "clarification": null
+      },
+      "evidence": [
+        {
+          "text": {
+            "sha256": "8cbbbc0b6384c7891344d489badab3a2caf41f0f3a28ed4efe4e2421e0fa35eb",
+            "characters": 497,
+            "notice": "Inspect full content in the authenticated local workspace"
+          },
+          "source": "rrf",
+          "section": "Reciprocal rank fusion",
+          "chunk_id": 72,
+          "source_id": "rrf",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+          "workspace": "public",
+          "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+          "synthetic": false,
+          "rrf_score": 0.02889344262295082,
+          "ranks": {
+            "dense": {
+              "rank": 1,
+              "raw_score": 0.7771590352058411
+            },
+            "bm25": {
+              "rank": 20,
+              "raw_score": 1.015118064952941
+            }
+          },
+          "rerank_score": 8.048561096191406
+        },
+        {
+          "text": {
+            "sha256": "7d97745f67ebb9c8a61433f9f0d2a6e2336ee44f239fa71b8af863267499adeb",
+            "characters": 1072,
+            "notice": "Inspect full content in the authenticated local workspace"
+          },
+          "source": "rrf",
+          "section": "Reciprocal rank fusion API",
+          "chunk_id": 73,
+          "source_id": "rrf",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+          "workspace": "public",
+          "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+          "synthetic": false,
+          "rrf_score": 0.031746031746031744,
+          "ranks": {
+            "dense": {
+              "rank": 3,
+              "raw_score": 0.6751870512962341
+            },
+            "bm25": {
+              "rank": 3,
+              "raw_score": 3.8135854435123187
+            }
+          },
+          "rerank_score": 6.348016738891602
+        },
+        {
+          "text": {
+            "sha256": "8aa3739a2eb2d25b9c741afbbe8d02e48079ba9304ed6219b90e763026dd816f",
+            "characters": 950,
+            "notice": "Inspect full content in the authenticated local workspace"
+          },
+          "source": "rrf",
+          "section": "Reciprocal rank fusion using multiple standard retrievers",
+          "chunk_id": 78,
+          "source_id": "rrf",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+          "workspace": "public",
+          "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+          "synthetic": false,
+          "rrf_score": 0.031099324975891997,
+          "ranks": {
+            "dense": {
+              "rank": 8,
+              "raw_score": 0.6204831004142761
+            },
+            "bm25": {
+              "rank": 1,
+              "raw_score": 5.454719123180526
+            }
+          },
+          "rerank_score": 6.027337074279785
+        },
+        {
+          "text": {
+            "sha256": "45275f2966c35ffc281d374c56b3b2d97b00475c110af047f36128b7ab9ba00d",
+            "characters": 1166,
+            "notice": "Inspect full content in the authenticated local workspace"
+          },
+          "source": "rrf",
+          "section": "Reciprocal rank fusion using multiple standard retrievers",
+          "chunk_id": 77,
+          "source_id": "rrf",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+          "workspace": "public",
+          "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+          "synthetic": false,
+          "rrf_score": 0.02821939586645469,
+          "ranks": {
+            "dense": {
+              "rank": 14,
+              "raw_score": 0.519512414932251
+            },
+            "bm25": {
+              "rank": 8,
+              "raw_score": 2.9310305680867446
+            }
+          },
+          "rerank_score": 5.848546981811523
+        },
+        {
+          "text": {
+            "sha256": "8d8d7cee08774ce1e0689921920990999a1e7e81d75ade4a77eb38408760329d",
+            "characters": 949,
+            "notice": "Inspect full content in the authenticated local workspace"
+          },
+          "source": "rrf",
+          "section": "Reciprocal rank fusion API",
+          "chunk_id": 75,
+          "source_id": "rrf",
+          "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+          "workspace": "public",
+          "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+          "synthetic": false,
+          "rrf_score": 0.02904040404040404,
+          "ranks": {
+            "dense": {
+              "rank": 12,
+              "raw_score": 0.5255705118179321
+            },
+            "bm25": {
+              "rank": 6,
+              "raw_score": 3.133372454143367
+            }
+          },
+          "rerank_score": 5.417696475982666
+        }
+      ],
+      "calculation": {
+        "expression": "1/(60+1) + 1/(60+3)",
+        "value": 0.032266458495966696
+      },
+      "observations": [
+        {
+          "tool": "knowledge_search",
+          "status": "ok",
+          "evidence": [
+            {
+              "text": {
+                "sha256": "8cbbbc0b6384c7891344d489badab3a2caf41f0f3a28ed4efe4e2421e0fa35eb",
+                "characters": 497,
+                "notice": "Inspect full content in the authenticated local workspace"
+              },
+              "source": "rrf",
+              "section": "Reciprocal rank fusion",
+              "chunk_id": 72,
+              "source_id": "rrf",
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+              "workspace": "public",
+              "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+              "synthetic": false,
+              "rrf_score": 0.02889344262295082,
+              "ranks": {
+                "dense": {
+                  "rank": 1,
+                  "raw_score": 0.7771590352058411
+                },
+                "bm25": {
+                  "rank": 20,
+                  "raw_score": 1.015118064952941
+                }
+              },
+              "rerank_score": 8.048561096191406
+            },
+            {
+              "text": {
+                "sha256": "7d97745f67ebb9c8a61433f9f0d2a6e2336ee44f239fa71b8af863267499adeb",
+                "characters": 1072,
+                "notice": "Inspect full content in the authenticated local workspace"
+              },
+              "source": "rrf",
+              "section": "Reciprocal rank fusion API",
+              "chunk_id": 73,
+              "source_id": "rrf",
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+              "workspace": "public",
+              "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+              "synthetic": false,
+              "rrf_score": 0.031746031746031744,
+              "ranks": {
+                "dense": {
+                  "rank": 3,
+                  "raw_score": 0.6751870512962341
+                },
+                "bm25": {
+                  "rank": 3,
+                  "raw_score": 3.8135854435123187
+                }
+              },
+              "rerank_score": 6.348016738891602
+            },
+            {
+              "text": {
+                "sha256": "8aa3739a2eb2d25b9c741afbbe8d02e48079ba9304ed6219b90e763026dd816f",
+                "characters": 950,
+                "notice": "Inspect full content in the authenticated local workspace"
+              },
+              "source": "rrf",
+              "section": "Reciprocal rank fusion using multiple standard retrievers",
+              "chunk_id": 78,
+              "source_id": "rrf",
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+              "workspace": "public",
+              "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+              "synthetic": false,
+              "rrf_score": 0.031099324975891997,
+              "ranks": {
+                "dense": {
+                  "rank": 8,
+                  "raw_score": 0.6204831004142761
+                },
+                "bm25": {
+                  "rank": 1,
+                  "raw_score": 5.454719123180526
+                }
+              },
+              "rerank_score": 6.027337074279785
+            },
+            {
+              "text": {
+                "sha256": "45275f2966c35ffc281d374c56b3b2d97b00475c110af047f36128b7ab9ba00d",
+                "characters": 1166,
+                "notice": "Inspect full content in the authenticated local workspace"
+              },
+              "source": "rrf",
+              "section": "Reciprocal rank fusion using multiple standard retrievers",
+              "chunk_id": 77,
+              "source_id": "rrf",
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+              "workspace": "public",
+              "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+              "synthetic": false,
+              "rrf_score": 0.02821939586645469,
+              "ranks": {
+                "dense": {
+                  "rank": 14,
+                  "raw_score": 0.519512414932251
+                },
+                "bm25": {
+                  "rank": 8,
+                  "raw_score": 2.9310305680867446
+                }
+              },
+              "rerank_score": 5.848546981811523
+            },
+            {
+              "text": {
+                "sha256": "8d8d7cee08774ce1e0689921920990999a1e7e81d75ade4a77eb38408760329d",
+                "characters": 949,
+                "notice": "Inspect full content in the authenticated local workspace"
+              },
+              "source": "rrf",
+              "section": "Reciprocal rank fusion API",
+              "chunk_id": 75,
+              "source_id": "rrf",
+              "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+              "workspace": "public",
+              "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+              "synthetic": false,
+              "rrf_score": 0.02904040404040404,
+              "ranks": {
+                "dense": {
+                  "rank": 12,
+                  "raw_score": 0.5255705118179321
+                },
+                "bm25": {
+                  "rank": 6,
+                  "raw_score": 3.133372454143367
+                }
+              },
+              "rerank_score": 5.417696475982666
+            }
+          ],
+          "trace": {
+            "authorized_candidates": 31,
+            "dense": [
+              [
+                72,
+                0.7771590352058411
+              ],
+              [
+                90,
+                0.6897923350334167
+              ],
+              [
+                73,
+                0.6751870512962341
+              ],
+              [
+                87,
+                0.6636856198310852
+              ],
+              [
+                96,
+                0.6521673798561096
+              ],
+              [
+                76,
+                0.6453664898872375
+              ],
+              [
+                95,
+                0.6305942535400391
+              ],
+              [
+                78,
+                0.6204831004142761
+              ],
+              [
+                91,
+                0.6070138216018677
+              ],
+              [
+                84,
+                0.5390908718109131
+              ],
+              [
+                79,
+                0.5379749536514282
+              ],
+              [
+                75,
+                0.5255705118179321
+              ],
+              [
+                99,
+                0.5217801928520203
+              ],
+              [
+                77,
+                0.519512414932251
+              ],
+              [
+                102,
+                0.5049240589141846
+              ],
+              [
+                89,
+                0.5035794377326965
+              ],
+              [
+                83,
+                0.5000560283660889
+              ],
+              [
+                93,
+                0.48780810832977295
+              ],
+              [
+                88,
+                0.48583531379699707
+              ],
+              [
+                85,
+                0.48353683948516846
+              ]
+            ],
+            "bm25": [
+              [
+                78,
+                5.454719123180526
+              ],
+              [
+                76,
+                3.9951166909547995
+              ],
+              [
+                73,
+                3.8135854435123187
+              ],
+              [
+                90,
+                3.518708431936404
+              ],
+              [
+                88,
+                3.2443197840233533
+              ],
+              [
+                75,
+                3.133372454143367
+              ],
+              [
+                84,
+                3.030504334060744
+              ],
+              [
+                77,
+                2.9310305680867446
+              ],
+              [
+                80,
+                1.2129493689208708
+              ],
+              [
+                85,
+                1.2118567381703973
+              ],
+              [
+                81,
+                1.2033100361877245
+              ],
+              [
+                86,
+                1.1633712001436622
+              ],
+              [
+                83,
+                1.1370215339111742
+              ],
+              [
+                92,
+                1.0825525233550368
+              ],
+              [
+                100,
+                1.0576828261514073
+              ],
+              [
+                91,
+                1.0494321548855055
+              ],
+              [
+                101,
+                1.0494321548855055
+              ],
+              [
+                89,
+                1.0467542481108552
+              ],
+              [
+                93,
+                1.0307146806067469
+              ],
+              [
+                72,
+                1.015118064952941
+              ]
+            ],
+            "fusion": [
+              {
+                "chunk_id": 90,
+                "rrf_score": 0.031754032258064516,
+                "ranks": {
+                  "dense": {
+                    "rank": 2,
+                    "raw_score": 0.6897923350334167
+                  },
+                  "bm25": {
+                    "rank": 4,
+                    "raw_score": 3.518708431936404
+                  }
+                }
+              },
+              {
+                "chunk_id": 73,
+                "rrf_score": 0.031746031746031744,
+                "ranks": {
+                  "dense": {
+                    "rank": 3,
+                    "raw_score": 0.6751870512962341
+                  },
+                  "bm25": {
+                    "rank": 3,
+                    "raw_score": 3.8135854435123187
+                  }
+                }
+              },
+              {
+                "chunk_id": 76,
+                "rrf_score": 0.03128054740957967,
+                "ranks": {
+                  "dense": {
+                    "rank": 6,
+                    "raw_score": 0.6453664898872375
+                  },
+                  "bm25": {
+                    "rank": 2,
+                    "raw_score": 3.9951166909547995
+                  }
+                }
+              },
+              {
+                "chunk_id": 78,
+                "rrf_score": 0.031099324975891997,
+                "ranks": {
+                  "dense": {
+                    "rank": 8,
+                    "raw_score": 0.6204831004142761
+                  },
+                  "bm25": {
+                    "rank": 1,
+                    "raw_score": 5.454719123180526
+                  }
+                }
+              },
+              {
+                "chunk_id": 84,
+                "rrf_score": 0.029211087420042643,
+                "ranks": {
+                  "dense": {
+                    "rank": 10,
+                    "raw_score": 0.5390908718109131
+                  },
+                  "bm25": {
+                    "rank": 7,
+                    "raw_score": 3.030504334060744
+                  }
+                }
+              },
+              {
+                "chunk_id": 75,
+                "rrf_score": 0.02904040404040404,
+                "ranks": {
+                  "dense": {
+                    "rank": 12,
+                    "raw_score": 0.5255705118179321
+                  },
+                  "bm25": {
+                    "rank": 6,
+                    "raw_score": 3.133372454143367
+                  }
+                }
+              },
+              {
+                "chunk_id": 72,
+                "rrf_score": 0.02889344262295082,
+                "ranks": {
+                  "dense": {
+                    "rank": 1,
+                    "raw_score": 0.7771590352058411
+                  },
+                  "bm25": {
+                    "rank": 20,
+                    "raw_score": 1.015118064952941
+                  }
+                }
+              },
+              {
+                "chunk_id": 77,
+                "rrf_score": 0.02821939586645469,
+                "ranks": {
+                  "dense": {
+                    "rank": 14,
+                    "raw_score": 0.519512414932251
+                  },
+                  "bm25": {
+                    "rank": 8,
+                    "raw_score": 2.9310305680867446
+                  }
+                }
+              },
+              {
+                "chunk_id": 88,
+                "rrf_score": 0.02804284323271665,
+                "ranks": {
+                  "dense": {
+                    "rank": 19,
+                    "raw_score": 0.48583531379699707
+                  },
+                  "bm25": {
+                    "rank": 5,
+                    "raw_score": 3.2443197840233533
+                  }
+                }
+              },
+              {
+                "chunk_id": 91,
+                "rrf_score": 0.027650648360030512,
+                "ranks": {
+                  "dense": {
+                    "rank": 9,
+                    "raw_score": 0.6070138216018677
+                  },
+                  "bm25": {
+                    "rank": 16,
+                    "raw_score": 1.0494321548855055
+                  }
+                }
+              },
+              {
+                "chunk_id": 85,
+                "rrf_score": 0.026785714285714288,
+                "ranks": {
+                  "dense": {
+                    "rank": 20,
+                    "raw_score": 0.48353683948516846
+                  },
+                  "bm25": {
+                    "rank": 10,
+                    "raw_score": 1.2118567381703973
+                  }
+                }
+              },
+              {
+                "chunk_id": 83,
+                "rrf_score": 0.02668564312399929,
+                "ranks": {
+                  "dense": {
+                    "rank": 17,
+                    "raw_score": 0.5000560283660889
+                  },
+                  "bm25": {
+                    "rank": 13,
+                    "raw_score": 1.1370215339111742
+                  }
+                }
+              },
+              {
+                "chunk_id": 89,
+                "rrf_score": 0.025978407557354925,
+                "ranks": {
+                  "dense": {
+                    "rank": 16,
+                    "raw_score": 0.5035794377326965
+                  },
+                  "bm25": {
+                    "rank": 18,
+                    "raw_score": 1.0467542481108552
+                  }
+                }
+              },
+              {
+                "chunk_id": 93,
+                "rrf_score": 0.025478740668614087,
+                "ranks": {
+                  "dense": {
+                    "rank": 18,
+                    "raw_score": 0.48780810832977295
+                  },
+                  "bm25": {
+                    "rank": 19,
+                    "raw_score": 1.0307146806067469
+                  }
+                }
+              },
+              {
+                "chunk_id": 87,
+                "rrf_score": 0.015625,
+                "ranks": {
+                  "dense": {
+                    "rank": 4,
+                    "raw_score": 0.6636856198310852
+                  }
+                }
+              },
+              {
+                "chunk_id": 96,
+                "rrf_score": 0.015384615384615385,
+                "ranks": {
+                  "dense": {
+                    "rank": 5,
+                    "raw_score": 0.6521673798561096
+                  }
+                }
+              },
+              {
+                "chunk_id": 95,
+                "rrf_score": 0.014925373134328358,
+                "ranks": {
+                  "dense": {
+                    "rank": 7,
+                    "raw_score": 0.6305942535400391
+                  }
+                }
+              },
+              {
+                "chunk_id": 80,
+                "rrf_score": 0.014492753623188406,
+                "ranks": {
+                  "bm25": {
+                    "rank": 9,
+                    "raw_score": 1.2129493689208708
+                  }
+                }
+              },
+              {
+                "chunk_id": 79,
+                "rrf_score": 0.014084507042253521,
+                "ranks": {
+                  "dense": {
+                    "rank": 11,
+                    "raw_score": 0.5379749536514282
+                  }
+                }
+              },
+              {
+                "chunk_id": 81,
+                "rrf_score": 0.014084507042253521,
+                "ranks": {
+                  "bm25": {
+                    "rank": 11,
+                    "raw_score": 1.2033100361877245
+                  }
+                }
+              },
+              {
+                "chunk_id": 86,
+                "rrf_score": 0.013888888888888888,
+                "ranks": {
+                  "bm25": {
+                    "rank": 12,
+                    "raw_score": 1.1633712001436622
+                  }
+                }
+              },
+              {
+                "chunk_id": 99,
+                "rrf_score": 0.0136986301369863,
+                "ranks": {
+                  "dense": {
+                    "rank": 13,
+                    "raw_score": 0.5217801928520203
+                  }
+                }
+              },
+              {
+                "chunk_id": 92,
+                "rrf_score": 0.013513513513513514,
+                "ranks": {
+                  "bm25": {
+                    "rank": 14,
+                    "raw_score": 1.0825525233550368
+                  }
+                }
+              },
+              {
+                "chunk_id": 102,
+                "rrf_score": 0.013333333333333334,
+                "ranks": {
+                  "dense": {
+                    "rank": 15,
+                    "raw_score": 0.5049240589141846
+                  }
+                }
+              },
+              {
+                "chunk_id": 100,
+                "rrf_score": 0.013333333333333334,
+                "ranks": {
+                  "bm25": {
+                    "rank": 15,
+                    "raw_score": 1.0576828261514073
+                  }
+                }
+              },
+              {
+                "chunk_id": 101,
+                "rrf_score": 0.012987012987012988,
+                "ranks": {
+                  "bm25": {
+                    "rank": 17,
+                    "raw_score": 1.0494321548855055
+                  }
+                }
+              }
+            ],
+            "reranked": [
+              {
+                "chunk_id": 72,
+                "rrf_score": 0.02889344262295082,
+                "ranks": {
+                  "dense": {
+                    "rank": 1,
+                    "raw_score": 0.7771590352058411
+                  },
+                  "bm25": {
+                    "rank": 20,
+                    "raw_score": 1.015118064952941
+                  }
+                },
+                "rerank_score": 8.048561096191406
+              },
+              {
+                "chunk_id": 73,
+                "rrf_score": 0.031746031746031744,
+                "ranks": {
+                  "dense": {
+                    "rank": 3,
+                    "raw_score": 0.6751870512962341
+                  },
+                  "bm25": {
+                    "rank": 3,
+                    "raw_score": 3.8135854435123187
+                  }
+                },
+                "rerank_score": 6.348016738891602
+              },
+              {
+                "chunk_id": 78,
+                "rrf_score": 0.031099324975891997,
+                "ranks": {
+                  "dense": {
+                    "rank": 8,
+                    "raw_score": 0.6204831004142761
+                  },
+                  "bm25": {
+                    "rank": 1,
+                    "raw_score": 5.454719123180526
+                  }
+                },
+                "rerank_score": 6.027337074279785
+              },
+              {
+                "chunk_id": 77,
+                "rrf_score": 0.02821939586645469,
+                "ranks": {
+                  "dense": {
+                    "rank": 14,
+                    "raw_score": 0.519512414932251
+                  },
+                  "bm25": {
+                    "rank": 8,
+                    "raw_score": 2.9310305680867446
+                  }
+                },
+                "rerank_score": 5.848546981811523
+              },
+              {
+                "chunk_id": 75,
+                "rrf_score": 0.02904040404040404,
+                "ranks": {
+                  "dense": {
+                    "rank": 12,
+                    "raw_score": 0.5255705118179321
+                  },
+                  "bm25": {
+                    "rank": 6,
+                    "raw_score": 3.133372454143367
+                  }
+                },
+                "rerank_score": 5.417696475982666
+              }
+            ],
+            "gate_threshold": -3.3842663764953613,
+            "gate_passed": true,
+            "mode": "rerank",
+            "manifest_sha256": "6a6fd346f905c3883c5b01d7d05f759d86755d029c510bb40eaa40fdedf7bf55",
+            "retrieval_ms": 24.79779999703169,
+            "rerank_ms": 2205.7387999957427,
+            "total_ms": 2230.5985999992117
+          }
+        },
+        {
+          "tool": "calculator",
+          "expression": "1/(60+1) + 1/(60+3)",
+          "value": 0.032266458495966696
+        }
+      ],
+      "action": "draft_report",
+      "args": {
+        "title": "How Reciprocal Rank Fusion (RRF) Combines Rankings",
+        "content": {
+          "sha256": "e977b308cdf596a9da97a8fdd8247b79fa321a59bd3cb8e199d295b1c7be468f",
+          "characters": 2438,
+          "notice": "Inspect full content in the authenticated local workspace"
+        }
+      },
+      "rounds": 2,
+      "draft": {
+        "title": "How Reciprocal Rank Fusion (RRF) Combines Rankings",
+        "content": {
+          "sha256": "0e26e570e8b3f2719b4f595a59489601dac046909bea5edf792c30d61f0ac510",
+          "characters": 2969,
+          "notice": "Inspect full content in the authenticated local workspace"
+        },
+        "destination": "reports/d6c6f4a73fc2480c8b9ea3d2aeb0b9ae.md",
+        "hash": "f859c81deb388cdc8726479a8806a49791770b61b54d63336c8a0eefa7500d34"
+      },
+      "approval": true,
+      "saved": {
+        "status": "saved",
+        "report_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+        "action_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae:save:v1",
+        "draft_hash": "f859c81deb388cdc8726479a8806a49791770b61b54d63336c8a0eefa7500d34",
+        "path": "local reports/ export",
+        "content": {
+          "sha256": "0e26e570e8b3f2719b4f595a59489601dac046909bea5edf792c30d61f0ac510",
+          "characters": 2969,
+          "notice": "Inspect full content in the authenticated local workspace"
+        }
+      },
+      "answer": {
+        "sha256": "1c49777766adddb53195b901e088efa539ef428d3eb19cd6c24c7c1fcfac0751",
+        "characters": 81,
+        "notice": "Inspect full content in the authenticated local workspace"
+      },
+      "next_node": "end"
+    },
+    "created": 1795068449.1285288
+  },
+  "events": [
+    {
+      "id": 778,
+      "run_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+      "node": "understand",
+      "input": {
+        "request": "Find how RRF combines rankings in source rrf, calculate 1/(60+1) + 1/(60+3), and save a short research report."
+      },
+      "output": {
+        "spec": {
+          "query": "How does RRF combine rankings?",
+          "source_id": "rrf",
+          "needs_search": true,
+          "needs_calculation": true,
+          "expression": "1/(60+1) + 1/(60+3)",
+          "wants_report": true,
+          "clarification": null
+        },
+        "observations": [],
+        "rounds": 0,
+        "answer": ""
+      },
+      "elapsed_ms": 2023.067899979651,
+      "created": 1795068451.2491498
+    },
+    {
+      "id": 779,
+      "run_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+      "node": "planner",
+      "input": {
+        "spec": {
+          "query": "How does RRF combine rankings?",
+          "source_id": "rrf",
+          "needs_search": true,
+          "needs_calculation": true,
+          "expression": "1/(60+1) + 1/(60+3)",
+          "wants_report": true,
+          "clarification": null
+        },
+        "observations": [],
+        "rounds": 0
+      },
+      "output": {
+        "action": "knowledge_search",
+        "args": {
+          "query": "How does RRF combine rankings?",
+          "source_id": "rrf"
+        },
+        "proposed_calls": [
+          "knowledge_search",
+          "calculator"
+        ]
+      },
+      "elapsed_ms": 764.3611000385135,
+      "created": 1795068452.075775
+    },
+    {
+      "id": 780,
+      "run_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+      "node": "tools",
+      "input": {
+        "action": "knowledge_search",
+        "args": {
+          "query": "How does RRF combine rankings?",
+          "source_id": "rrf"
+        }
+      },
+      "output": {
+        "observations": [
+          {
+            "tool": "knowledge_search",
+            "status": "ok",
+            "evidence": [
+              {
+                "text": {
+                  "sha256": "8cbbbc0b6384c7891344d489badab3a2caf41f0f3a28ed4efe4e2421e0fa35eb",
+                  "characters": 497,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion",
+                "chunk_id": 72,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.02889344262295082,
+                "ranks": {
+                  "dense": {
+                    "rank": 1,
+                    "raw_score": 0.7771590352058411
+                  },
+                  "bm25": {
+                    "rank": 20,
+                    "raw_score": 1.015118064952941
+                  }
+                },
+                "rerank_score": 8.048561096191406
+              },
+              {
+                "text": {
+                  "sha256": "7d97745f67ebb9c8a61433f9f0d2a6e2336ee44f239fa71b8af863267499adeb",
+                  "characters": 1072,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion API",
+                "chunk_id": 73,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.031746031746031744,
+                "ranks": {
+                  "dense": {
+                    "rank": 3,
+                    "raw_score": 0.6751870512962341
+                  },
+                  "bm25": {
+                    "rank": 3,
+                    "raw_score": 3.8135854435123187
+                  }
+                },
+                "rerank_score": 6.348016738891602
+              },
+              {
+                "text": {
+                  "sha256": "8aa3739a2eb2d25b9c741afbbe8d02e48079ba9304ed6219b90e763026dd816f",
+                  "characters": 950,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion using multiple standard retrievers",
+                "chunk_id": 78,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.031099324975891997,
+                "ranks": {
+                  "dense": {
+                    "rank": 8,
+                    "raw_score": 0.6204831004142761
+                  },
+                  "bm25": {
+                    "rank": 1,
+                    "raw_score": 5.454719123180526
+                  }
+                },
+                "rerank_score": 6.027337074279785
+              },
+              {
+                "text": {
+                  "sha256": "45275f2966c35ffc281d374c56b3b2d97b00475c110af047f36128b7ab9ba00d",
+                  "characters": 1166,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion using multiple standard retrievers",
+                "chunk_id": 77,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.02821939586645469,
+                "ranks": {
+                  "dense": {
+                    "rank": 14,
+                    "raw_score": 0.519512414932251
+                  },
+                  "bm25": {
+                    "rank": 8,
+                    "raw_score": 2.9310305680867446
+                  }
+                },
+                "rerank_score": 5.848546981811523
+              },
+              {
+                "text": {
+                  "sha256": "8d8d7cee08774ce1e0689921920990999a1e7e81d75ade4a77eb38408760329d",
+                  "characters": 949,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion API",
+                "chunk_id": 75,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.02904040404040404,
+                "ranks": {
+                  "dense": {
+                    "rank": 12,
+                    "raw_score": 0.5255705118179321
+                  },
+                  "bm25": {
+                    "rank": 6,
+                    "raw_score": 3.133372454143367
+                  }
+                },
+                "rerank_score": 5.417696475982666
+              }
+            ],
+            "trace": {
+              "authorized_candidates": 31,
+              "dense": [
+                [
+                  72,
+                  0.7771590352058411
+                ],
+                [
+                  90,
+                  0.6897923350334167
+                ],
+                [
+                  73,
+                  0.6751870512962341
+                ],
+                [
+                  87,
+                  0.6636856198310852
+                ],
+                [
+                  96,
+                  0.6521673798561096
+                ],
+                [
+                  76,
+                  0.6453664898872375
+                ],
+                [
+                  95,
+                  0.6305942535400391
+                ],
+                [
+                  78,
+                  0.6204831004142761
+                ],
+                [
+                  91,
+                  0.6070138216018677
+                ],
+                [
+                  84,
+                  0.5390908718109131
+                ],
+                [
+                  79,
+                  0.5379749536514282
+                ],
+                [
+                  75,
+                  0.5255705118179321
+                ],
+                [
+                  99,
+                  0.5217801928520203
+                ],
+                [
+                  77,
+                  0.519512414932251
+                ],
+                [
+                  102,
+                  0.5049240589141846
+                ],
+                [
+                  89,
+                  0.5035794377326965
+                ],
+                [
+                  83,
+                  0.5000560283660889
+                ],
+                [
+                  93,
+                  0.48780810832977295
+                ],
+                [
+                  88,
+                  0.48583531379699707
+                ],
+                [
+                  85,
+                  0.48353683948516846
+                ]
+              ],
+              "bm25": [
+                [
+                  78,
+                  5.454719123180526
+                ],
+                [
+                  76,
+                  3.9951166909547995
+                ],
+                [
+                  73,
+                  3.8135854435123187
+                ],
+                [
+                  90,
+                  3.518708431936404
+                ],
+                [
+                  88,
+                  3.2443197840233533
+                ],
+                [
+                  75,
+                  3.133372454143367
+                ],
+                [
+                  84,
+                  3.030504334060744
+                ],
+                [
+                  77,
+                  2.9310305680867446
+                ],
+                [
+                  80,
+                  1.2129493689208708
+                ],
+                [
+                  85,
+                  1.2118567381703973
+                ],
+                [
+                  81,
+                  1.2033100361877245
+                ],
+                [
+                  86,
+                  1.1633712001436622
+                ],
+                [
+                  83,
+                  1.1370215339111742
+                ],
+                [
+                  92,
+                  1.0825525233550368
+                ],
+                [
+                  100,
+                  1.0576828261514073
+                ],
+                [
+                  91,
+                  1.0494321548855055
+                ],
+                [
+                  101,
+                  1.0494321548855055
+                ],
+                [
+                  89,
+                  1.0467542481108552
+                ],
+                [
+                  93,
+                  1.0307146806067469
+                ],
+                [
+                  72,
+                  1.015118064952941
+                ]
+              ],
+              "fusion": [
+                {
+                  "chunk_id": 90,
+                  "rrf_score": 0.031754032258064516,
+                  "ranks": {
+                    "dense": {
+                      "rank": 2,
+                      "raw_score": 0.6897923350334167
+                    },
+                    "bm25": {
+                      "rank": 4,
+                      "raw_score": 3.518708431936404
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 73,
+                  "rrf_score": 0.031746031746031744,
+                  "ranks": {
+                    "dense": {
+                      "rank": 3,
+                      "raw_score": 0.6751870512962341
+                    },
+                    "bm25": {
+                      "rank": 3,
+                      "raw_score": 3.8135854435123187
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 76,
+                  "rrf_score": 0.03128054740957967,
+                  "ranks": {
+                    "dense": {
+                      "rank": 6,
+                      "raw_score": 0.6453664898872375
+                    },
+                    "bm25": {
+                      "rank": 2,
+                      "raw_score": 3.9951166909547995
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 78,
+                  "rrf_score": 0.031099324975891997,
+                  "ranks": {
+                    "dense": {
+                      "rank": 8,
+                      "raw_score": 0.6204831004142761
+                    },
+                    "bm25": {
+                      "rank": 1,
+                      "raw_score": 5.454719123180526
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 84,
+                  "rrf_score": 0.029211087420042643,
+                  "ranks": {
+                    "dense": {
+                      "rank": 10,
+                      "raw_score": 0.5390908718109131
+                    },
+                    "bm25": {
+                      "rank": 7,
+                      "raw_score": 3.030504334060744
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 75,
+                  "rrf_score": 0.02904040404040404,
+                  "ranks": {
+                    "dense": {
+                      "rank": 12,
+                      "raw_score": 0.5255705118179321
+                    },
+                    "bm25": {
+                      "rank": 6,
+                      "raw_score": 3.133372454143367
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 72,
+                  "rrf_score": 0.02889344262295082,
+                  "ranks": {
+                    "dense": {
+                      "rank": 1,
+                      "raw_score": 0.7771590352058411
+                    },
+                    "bm25": {
+                      "rank": 20,
+                      "raw_score": 1.015118064952941
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 77,
+                  "rrf_score": 0.02821939586645469,
+                  "ranks": {
+                    "dense": {
+                      "rank": 14,
+                      "raw_score": 0.519512414932251
+                    },
+                    "bm25": {
+                      "rank": 8,
+                      "raw_score": 2.9310305680867446
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 88,
+                  "rrf_score": 0.02804284323271665,
+                  "ranks": {
+                    "dense": {
+                      "rank": 19,
+                      "raw_score": 0.48583531379699707
+                    },
+                    "bm25": {
+                      "rank": 5,
+                      "raw_score": 3.2443197840233533
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 91,
+                  "rrf_score": 0.027650648360030512,
+                  "ranks": {
+                    "dense": {
+                      "rank": 9,
+                      "raw_score": 0.6070138216018677
+                    },
+                    "bm25": {
+                      "rank": 16,
+                      "raw_score": 1.0494321548855055
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 85,
+                  "rrf_score": 0.026785714285714288,
+                  "ranks": {
+                    "dense": {
+                      "rank": 20,
+                      "raw_score": 0.48353683948516846
+                    },
+                    "bm25": {
+                      "rank": 10,
+                      "raw_score": 1.2118567381703973
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 83,
+                  "rrf_score": 0.02668564312399929,
+                  "ranks": {
+                    "dense": {
+                      "rank": 17,
+                      "raw_score": 0.5000560283660889
+                    },
+                    "bm25": {
+                      "rank": 13,
+                      "raw_score": 1.1370215339111742
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 89,
+                  "rrf_score": 0.025978407557354925,
+                  "ranks": {
+                    "dense": {
+                      "rank": 16,
+                      "raw_score": 0.5035794377326965
+                    },
+                    "bm25": {
+                      "rank": 18,
+                      "raw_score": 1.0467542481108552
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 93,
+                  "rrf_score": 0.025478740668614087,
+                  "ranks": {
+                    "dense": {
+                      "rank": 18,
+                      "raw_score": 0.48780810832977295
+                    },
+                    "bm25": {
+                      "rank": 19,
+                      "raw_score": 1.0307146806067469
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 87,
+                  "rrf_score": 0.015625,
+                  "ranks": {
+                    "dense": {
+                      "rank": 4,
+                      "raw_score": 0.6636856198310852
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 96,
+                  "rrf_score": 0.015384615384615385,
+                  "ranks": {
+                    "dense": {
+                      "rank": 5,
+                      "raw_score": 0.6521673798561096
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 95,
+                  "rrf_score": 0.014925373134328358,
+                  "ranks": {
+                    "dense": {
+                      "rank": 7,
+                      "raw_score": 0.6305942535400391
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 80,
+                  "rrf_score": 0.014492753623188406,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 9,
+                      "raw_score": 1.2129493689208708
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 79,
+                  "rrf_score": 0.014084507042253521,
+                  "ranks": {
+                    "dense": {
+                      "rank": 11,
+                      "raw_score": 0.5379749536514282
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 81,
+                  "rrf_score": 0.014084507042253521,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 11,
+                      "raw_score": 1.2033100361877245
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 86,
+                  "rrf_score": 0.013888888888888888,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 12,
+                      "raw_score": 1.1633712001436622
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 99,
+                  "rrf_score": 0.0136986301369863,
+                  "ranks": {
+                    "dense": {
+                      "rank": 13,
+                      "raw_score": 0.5217801928520203
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 92,
+                  "rrf_score": 0.013513513513513514,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 14,
+                      "raw_score": 1.0825525233550368
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 102,
+                  "rrf_score": 0.013333333333333334,
+                  "ranks": {
+                    "dense": {
+                      "rank": 15,
+                      "raw_score": 0.5049240589141846
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 100,
+                  "rrf_score": 0.013333333333333334,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 15,
+                      "raw_score": 1.0576828261514073
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 101,
+                  "rrf_score": 0.012987012987012988,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 17,
+                      "raw_score": 1.0494321548855055
+                    }
+                  }
+                }
+              ],
+              "reranked": [
+                {
+                  "chunk_id": 72,
+                  "rrf_score": 0.02889344262295082,
+                  "ranks": {
+                    "dense": {
+                      "rank": 1,
+                      "raw_score": 0.7771590352058411
+                    },
+                    "bm25": {
+                      "rank": 20,
+                      "raw_score": 1.015118064952941
+                    }
+                  },
+                  "rerank_score": 8.048561096191406
+                },
+                {
+                  "chunk_id": 73,
+                  "rrf_score": 0.031746031746031744,
+                  "ranks": {
+                    "dense": {
+                      "rank": 3,
+                      "raw_score": 0.6751870512962341
+                    },
+                    "bm25": {
+                      "rank": 3,
+                      "raw_score": 3.8135854435123187
+                    }
+                  },
+                  "rerank_score": 6.348016738891602
+                },
+                {
+                  "chunk_id": 78,
+                  "rrf_score": 0.031099324975891997,
+                  "ranks": {
+                    "dense": {
+                      "rank": 8,
+                      "raw_score": 0.6204831004142761
+                    },
+                    "bm25": {
+                      "rank": 1,
+                      "raw_score": 5.454719123180526
+                    }
+                  },
+                  "rerank_score": 6.027337074279785
+                },
+                {
+                  "chunk_id": 77,
+                  "rrf_score": 0.02821939586645469,
+                  "ranks": {
+                    "dense": {
+                      "rank": 14,
+                      "raw_score": 0.519512414932251
+                    },
+                    "bm25": {
+                      "rank": 8,
+                      "raw_score": 2.9310305680867446
+                    }
+                  },
+                  "rerank_score": 5.848546981811523
+                },
+                {
+                  "chunk_id": 75,
+                  "rrf_score": 0.02904040404040404,
+                  "ranks": {
+                    "dense": {
+                      "rank": 12,
+                      "raw_score": 0.5255705118179321
+                    },
+                    "bm25": {
+                      "rank": 6,
+                      "raw_score": 3.133372454143367
+                    }
+                  },
+                  "rerank_score": 5.417696475982666
+                }
+              ],
+              "gate_threshold": -3.3842663764953613,
+              "gate_passed": true,
+              "mode": "rerank",
+              "manifest_sha256": "6a6fd346f905c3883c5b01d7d05f759d86755d029c510bb40eaa40fdedf7bf55",
+              "retrieval_ms": 24.79779999703169,
+              "rerank_ms": 2205.7387999957427,
+              "total_ms": 2230.5985999992117
+            }
+          }
+        ],
+        "rounds": 1,
+        "evidence": [
+          {
+            "text": {
+              "sha256": "8cbbbc0b6384c7891344d489badab3a2caf41f0f3a28ed4efe4e2421e0fa35eb",
+              "characters": 497,
+              "notice": "Inspect full content in the authenticated local workspace"
+            },
+            "source": "rrf",
+            "section": "Reciprocal rank fusion",
+            "chunk_id": 72,
+            "source_id": "rrf",
+            "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+            "workspace": "public",
+            "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+            "synthetic": false,
+            "rrf_score": 0.02889344262295082,
+            "ranks": {
+              "dense": {
+                "rank": 1,
+                "raw_score": 0.7771590352058411
+              },
+              "bm25": {
+                "rank": 20,
+                "raw_score": 1.015118064952941
+              }
+            },
+            "rerank_score": 8.048561096191406
+          },
+          {
+            "text": {
+              "sha256": "7d97745f67ebb9c8a61433f9f0d2a6e2336ee44f239fa71b8af863267499adeb",
+              "characters": 1072,
+              "notice": "Inspect full content in the authenticated local workspace"
+            },
+            "source": "rrf",
+            "section": "Reciprocal rank fusion API",
+            "chunk_id": 73,
+            "source_id": "rrf",
+            "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+            "workspace": "public",
+            "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+            "synthetic": false,
+            "rrf_score": 0.031746031746031744,
+            "ranks": {
+              "dense": {
+                "rank": 3,
+                "raw_score": 0.6751870512962341
+              },
+              "bm25": {
+                "rank": 3,
+                "raw_score": 3.8135854435123187
+              }
+            },
+            "rerank_score": 6.348016738891602
+          },
+          {
+            "text": {
+              "sha256": "8aa3739a2eb2d25b9c741afbbe8d02e48079ba9304ed6219b90e763026dd816f",
+              "characters": 950,
+              "notice": "Inspect full content in the authenticated local workspace"
+            },
+            "source": "rrf",
+            "section": "Reciprocal rank fusion using multiple standard retrievers",
+            "chunk_id": 78,
+            "source_id": "rrf",
+            "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+            "workspace": "public",
+            "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+            "synthetic": false,
+            "rrf_score": 0.031099324975891997,
+            "ranks": {
+              "dense": {
+                "rank": 8,
+                "raw_score": 0.6204831004142761
+              },
+              "bm25": {
+                "rank": 1,
+                "raw_score": 5.454719123180526
+              }
+            },
+            "rerank_score": 6.027337074279785
+          },
+          {
+            "text": {
+              "sha256": "45275f2966c35ffc281d374c56b3b2d97b00475c110af047f36128b7ab9ba00d",
+              "characters": 1166,
+              "notice": "Inspect full content in the authenticated local workspace"
+            },
+            "source": "rrf",
+            "section": "Reciprocal rank fusion using multiple standard retrievers",
+            "chunk_id": 77,
+            "source_id": "rrf",
+            "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+            "workspace": "public",
+            "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+            "synthetic": false,
+            "rrf_score": 0.02821939586645469,
+            "ranks": {
+              "dense": {
+                "rank": 14,
+                "raw_score": 0.519512414932251
+              },
+              "bm25": {
+                "rank": 8,
+                "raw_score": 2.9310305680867446
+              }
+            },
+            "rerank_score": 5.848546981811523
+          },
+          {
+            "text": {
+              "sha256": "8d8d7cee08774ce1e0689921920990999a1e7e81d75ade4a77eb38408760329d",
+              "characters": 949,
+              "notice": "Inspect full content in the authenticated local workspace"
+            },
+            "source": "rrf",
+            "section": "Reciprocal rank fusion API",
+            "chunk_id": 75,
+            "source_id": "rrf",
+            "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+            "workspace": "public",
+            "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+            "synthetic": false,
+            "rrf_score": 0.02904040404040404,
+            "ranks": {
+              "dense": {
+                "rank": 12,
+                "raw_score": 0.5255705118179321
+              },
+              "bm25": {
+                "rank": 6,
+                "raw_score": 3.133372454143367
+              }
+            },
+            "rerank_score": 5.417696475982666
+          }
+        ]
+      },
+      "elapsed_ms": 3471.5566000086255,
+      "created": 1795068455.6193583
+    },
+    {
+      "id": 781,
+      "run_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+      "node": "planner",
+      "input": {
+        "spec": {
+          "query": "How does RRF combine rankings?",
+          "source_id": "rrf",
+          "needs_search": true,
+          "needs_calculation": true,
+          "expression": "1/(60+1) + 1/(60+3)",
+          "wants_report": true,
+          "clarification": null
+        },
+        "observations": [
+          {
+            "tool": "knowledge_search",
+            "status": "ok",
+            "evidence": [
+              {
+                "text": {
+                  "sha256": "8cbbbc0b6384c7891344d489badab3a2caf41f0f3a28ed4efe4e2421e0fa35eb",
+                  "characters": 497,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion",
+                "chunk_id": 72,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.02889344262295082,
+                "ranks": {
+                  "dense": {
+                    "rank": 1,
+                    "raw_score": 0.7771590352058411
+                  },
+                  "bm25": {
+                    "rank": 20,
+                    "raw_score": 1.015118064952941
+                  }
+                },
+                "rerank_score": 8.048561096191406
+              },
+              {
+                "text": {
+                  "sha256": "7d97745f67ebb9c8a61433f9f0d2a6e2336ee44f239fa71b8af863267499adeb",
+                  "characters": 1072,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion API",
+                "chunk_id": 73,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.031746031746031744,
+                "ranks": {
+                  "dense": {
+                    "rank": 3,
+                    "raw_score": 0.6751870512962341
+                  },
+                  "bm25": {
+                    "rank": 3,
+                    "raw_score": 3.8135854435123187
+                  }
+                },
+                "rerank_score": 6.348016738891602
+              },
+              {
+                "text": {
+                  "sha256": "8aa3739a2eb2d25b9c741afbbe8d02e48079ba9304ed6219b90e763026dd816f",
+                  "characters": 950,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion using multiple standard retrievers",
+                "chunk_id": 78,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.031099324975891997,
+                "ranks": {
+                  "dense": {
+                    "rank": 8,
+                    "raw_score": 0.6204831004142761
+                  },
+                  "bm25": {
+                    "rank": 1,
+                    "raw_score": 5.454719123180526
+                  }
+                },
+                "rerank_score": 6.027337074279785
+              },
+              {
+                "text": {
+                  "sha256": "45275f2966c35ffc281d374c56b3b2d97b00475c110af047f36128b7ab9ba00d",
+                  "characters": 1166,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion using multiple standard retrievers",
+                "chunk_id": 77,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.02821939586645469,
+                "ranks": {
+                  "dense": {
+                    "rank": 14,
+                    "raw_score": 0.519512414932251
+                  },
+                  "bm25": {
+                    "rank": 8,
+                    "raw_score": 2.9310305680867446
+                  }
+                },
+                "rerank_score": 5.848546981811523
+              },
+              {
+                "text": {
+                  "sha256": "8d8d7cee08774ce1e0689921920990999a1e7e81d75ade4a77eb38408760329d",
+                  "characters": 949,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion API",
+                "chunk_id": 75,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.02904040404040404,
+                "ranks": {
+                  "dense": {
+                    "rank": 12,
+                    "raw_score": 0.5255705118179321
+                  },
+                  "bm25": {
+                    "rank": 6,
+                    "raw_score": 3.133372454143367
+                  }
+                },
+                "rerank_score": 5.417696475982666
+              }
+            ],
+            "trace": {
+              "authorized_candidates": 31,
+              "dense": [
+                [
+                  72,
+                  0.7771590352058411
+                ],
+                [
+                  90,
+                  0.6897923350334167
+                ],
+                [
+                  73,
+                  0.6751870512962341
+                ],
+                [
+                  87,
+                  0.6636856198310852
+                ],
+                [
+                  96,
+                  0.6521673798561096
+                ],
+                [
+                  76,
+                  0.6453664898872375
+                ],
+                [
+                  95,
+                  0.6305942535400391
+                ],
+                [
+                  78,
+                  0.6204831004142761
+                ],
+                [
+                  91,
+                  0.6070138216018677
+                ],
+                [
+                  84,
+                  0.5390908718109131
+                ],
+                [
+                  79,
+                  0.5379749536514282
+                ],
+                [
+                  75,
+                  0.5255705118179321
+                ],
+                [
+                  99,
+                  0.5217801928520203
+                ],
+                [
+                  77,
+                  0.519512414932251
+                ],
+                [
+                  102,
+                  0.5049240589141846
+                ],
+                [
+                  89,
+                  0.5035794377326965
+                ],
+                [
+                  83,
+                  0.5000560283660889
+                ],
+                [
+                  93,
+                  0.48780810832977295
+                ],
+                [
+                  88,
+                  0.48583531379699707
+                ],
+                [
+                  85,
+                  0.48353683948516846
+                ]
+              ],
+              "bm25": [
+                [
+                  78,
+                  5.454719123180526
+                ],
+                [
+                  76,
+                  3.9951166909547995
+                ],
+                [
+                  73,
+                  3.8135854435123187
+                ],
+                [
+                  90,
+                  3.518708431936404
+                ],
+                [
+                  88,
+                  3.2443197840233533
+                ],
+                [
+                  75,
+                  3.133372454143367
+                ],
+                [
+                  84,
+                  3.030504334060744
+                ],
+                [
+                  77,
+                  2.9310305680867446
+                ],
+                [
+                  80,
+                  1.2129493689208708
+                ],
+                [
+                  85,
+                  1.2118567381703973
+                ],
+                [
+                  81,
+                  1.2033100361877245
+                ],
+                [
+                  86,
+                  1.1633712001436622
+                ],
+                [
+                  83,
+                  1.1370215339111742
+                ],
+                [
+                  92,
+                  1.0825525233550368
+                ],
+                [
+                  100,
+                  1.0576828261514073
+                ],
+                [
+                  91,
+                  1.0494321548855055
+                ],
+                [
+                  101,
+                  1.0494321548855055
+                ],
+                [
+                  89,
+                  1.0467542481108552
+                ],
+                [
+                  93,
+                  1.0307146806067469
+                ],
+                [
+                  72,
+                  1.015118064952941
+                ]
+              ],
+              "fusion": [
+                {
+                  "chunk_id": 90,
+                  "rrf_score": 0.031754032258064516,
+                  "ranks": {
+                    "dense": {
+                      "rank": 2,
+                      "raw_score": 0.6897923350334167
+                    },
+                    "bm25": {
+                      "rank": 4,
+                      "raw_score": 3.518708431936404
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 73,
+                  "rrf_score": 0.031746031746031744,
+                  "ranks": {
+                    "dense": {
+                      "rank": 3,
+                      "raw_score": 0.6751870512962341
+                    },
+                    "bm25": {
+                      "rank": 3,
+                      "raw_score": 3.8135854435123187
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 76,
+                  "rrf_score": 0.03128054740957967,
+                  "ranks": {
+                    "dense": {
+                      "rank": 6,
+                      "raw_score": 0.6453664898872375
+                    },
+                    "bm25": {
+                      "rank": 2,
+                      "raw_score": 3.9951166909547995
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 78,
+                  "rrf_score": 0.031099324975891997,
+                  "ranks": {
+                    "dense": {
+                      "rank": 8,
+                      "raw_score": 0.6204831004142761
+                    },
+                    "bm25": {
+                      "rank": 1,
+                      "raw_score": 5.454719123180526
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 84,
+                  "rrf_score": 0.029211087420042643,
+                  "ranks": {
+                    "dense": {
+                      "rank": 10,
+                      "raw_score": 0.5390908718109131
+                    },
+                    "bm25": {
+                      "rank": 7,
+                      "raw_score": 3.030504334060744
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 75,
+                  "rrf_score": 0.02904040404040404,
+                  "ranks": {
+                    "dense": {
+                      "rank": 12,
+                      "raw_score": 0.5255705118179321
+                    },
+                    "bm25": {
+                      "rank": 6,
+                      "raw_score": 3.133372454143367
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 72,
+                  "rrf_score": 0.02889344262295082,
+                  "ranks": {
+                    "dense": {
+                      "rank": 1,
+                      "raw_score": 0.7771590352058411
+                    },
+                    "bm25": {
+                      "rank": 20,
+                      "raw_score": 1.015118064952941
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 77,
+                  "rrf_score": 0.02821939586645469,
+                  "ranks": {
+                    "dense": {
+                      "rank": 14,
+                      "raw_score": 0.519512414932251
+                    },
+                    "bm25": {
+                      "rank": 8,
+                      "raw_score": 2.9310305680867446
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 88,
+                  "rrf_score": 0.02804284323271665,
+                  "ranks": {
+                    "dense": {
+                      "rank": 19,
+                      "raw_score": 0.48583531379699707
+                    },
+                    "bm25": {
+                      "rank": 5,
+                      "raw_score": 3.2443197840233533
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 91,
+                  "rrf_score": 0.027650648360030512,
+                  "ranks": {
+                    "dense": {
+                      "rank": 9,
+                      "raw_score": 0.6070138216018677
+                    },
+                    "bm25": {
+                      "rank": 16,
+                      "raw_score": 1.0494321548855055
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 85,
+                  "rrf_score": 0.026785714285714288,
+                  "ranks": {
+                    "dense": {
+                      "rank": 20,
+                      "raw_score": 0.48353683948516846
+                    },
+                    "bm25": {
+                      "rank": 10,
+                      "raw_score": 1.2118567381703973
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 83,
+                  "rrf_score": 0.02668564312399929,
+                  "ranks": {
+                    "dense": {
+                      "rank": 17,
+                      "raw_score": 0.5000560283660889
+                    },
+                    "bm25": {
+                      "rank": 13,
+                      "raw_score": 1.1370215339111742
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 89,
+                  "rrf_score": 0.025978407557354925,
+                  "ranks": {
+                    "dense": {
+                      "rank": 16,
+                      "raw_score": 0.5035794377326965
+                    },
+                    "bm25": {
+                      "rank": 18,
+                      "raw_score": 1.0467542481108552
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 93,
+                  "rrf_score": 0.025478740668614087,
+                  "ranks": {
+                    "dense": {
+                      "rank": 18,
+                      "raw_score": 0.48780810832977295
+                    },
+                    "bm25": {
+                      "rank": 19,
+                      "raw_score": 1.0307146806067469
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 87,
+                  "rrf_score": 0.015625,
+                  "ranks": {
+                    "dense": {
+                      "rank": 4,
+                      "raw_score": 0.6636856198310852
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 96,
+                  "rrf_score": 0.015384615384615385,
+                  "ranks": {
+                    "dense": {
+                      "rank": 5,
+                      "raw_score": 0.6521673798561096
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 95,
+                  "rrf_score": 0.014925373134328358,
+                  "ranks": {
+                    "dense": {
+                      "rank": 7,
+                      "raw_score": 0.6305942535400391
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 80,
+                  "rrf_score": 0.014492753623188406,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 9,
+                      "raw_score": 1.2129493689208708
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 79,
+                  "rrf_score": 0.014084507042253521,
+                  "ranks": {
+                    "dense": {
+                      "rank": 11,
+                      "raw_score": 0.5379749536514282
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 81,
+                  "rrf_score": 0.014084507042253521,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 11,
+                      "raw_score": 1.2033100361877245
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 86,
+                  "rrf_score": 0.013888888888888888,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 12,
+                      "raw_score": 1.1633712001436622
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 99,
+                  "rrf_score": 0.0136986301369863,
+                  "ranks": {
+                    "dense": {
+                      "rank": 13,
+                      "raw_score": 0.5217801928520203
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 92,
+                  "rrf_score": 0.013513513513513514,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 14,
+                      "raw_score": 1.0825525233550368
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 102,
+                  "rrf_score": 0.013333333333333334,
+                  "ranks": {
+                    "dense": {
+                      "rank": 15,
+                      "raw_score": 0.5049240589141846
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 100,
+                  "rrf_score": 0.013333333333333334,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 15,
+                      "raw_score": 1.0576828261514073
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 101,
+                  "rrf_score": 0.012987012987012988,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 17,
+                      "raw_score": 1.0494321548855055
+                    }
+                  }
+                }
+              ],
+              "reranked": [
+                {
+                  "chunk_id": 72,
+                  "rrf_score": 0.02889344262295082,
+                  "ranks": {
+                    "dense": {
+                      "rank": 1,
+                      "raw_score": 0.7771590352058411
+                    },
+                    "bm25": {
+                      "rank": 20,
+                      "raw_score": 1.015118064952941
+                    }
+                  },
+                  "rerank_score": 8.048561096191406
+                },
+                {
+                  "chunk_id": 73,
+                  "rrf_score": 0.031746031746031744,
+                  "ranks": {
+                    "dense": {
+                      "rank": 3,
+                      "raw_score": 0.6751870512962341
+                    },
+                    "bm25": {
+                      "rank": 3,
+                      "raw_score": 3.8135854435123187
+                    }
+                  },
+                  "rerank_score": 6.348016738891602
+                },
+                {
+                  "chunk_id": 78,
+                  "rrf_score": 0.031099324975891997,
+                  "ranks": {
+                    "dense": {
+                      "rank": 8,
+                      "raw_score": 0.6204831004142761
+                    },
+                    "bm25": {
+                      "rank": 1,
+                      "raw_score": 5.454719123180526
+                    }
+                  },
+                  "rerank_score": 6.027337074279785
+                },
+                {
+                  "chunk_id": 77,
+                  "rrf_score": 0.02821939586645469,
+                  "ranks": {
+                    "dense": {
+                      "rank": 14,
+                      "raw_score": 0.519512414932251
+                    },
+                    "bm25": {
+                      "rank": 8,
+                      "raw_score": 2.9310305680867446
+                    }
+                  },
+                  "rerank_score": 5.848546981811523
+                },
+                {
+                  "chunk_id": 75,
+                  "rrf_score": 0.02904040404040404,
+                  "ranks": {
+                    "dense": {
+                      "rank": 12,
+                      "raw_score": 0.5255705118179321
+                    },
+                    "bm25": {
+                      "rank": 6,
+                      "raw_score": 3.133372454143367
+                    }
+                  },
+                  "rerank_score": 5.417696475982666
+                }
+              ],
+              "gate_threshold": -3.3842663764953613,
+              "gate_passed": true,
+              "mode": "rerank",
+              "manifest_sha256": "6a6fd346f905c3883c5b01d7d05f759d86755d029c510bb40eaa40fdedf7bf55",
+              "retrieval_ms": 24.79779999703169,
+              "rerank_ms": 2205.7387999957427,
+              "total_ms": 2230.5985999992117
+            }
+          }
+        ],
+        "rounds": 1
+      },
+      "output": {
+        "action": "calculator",
+        "args": {
+          "expression": "1/(60+1) + 1/(60+3)"
+        },
+        "proposed_calls": [
+          "calculator"
+        ]
+      },
+      "elapsed_ms": 1197.1679999842308,
+      "created": 1795068456.8815353
+    },
+    {
+      "id": 782,
+      "run_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+      "node": "tools",
+      "input": {
+        "action": "calculator",
+        "args": {
+          "expression": "1/(60+1) + 1/(60+3)"
+        }
+      },
+      "output": {
+        "observations": [
+          {
+            "tool": "knowledge_search",
+            "status": "ok",
+            "evidence": [
+              {
+                "text": {
+                  "sha256": "8cbbbc0b6384c7891344d489badab3a2caf41f0f3a28ed4efe4e2421e0fa35eb",
+                  "characters": 497,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion",
+                "chunk_id": 72,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.02889344262295082,
+                "ranks": {
+                  "dense": {
+                    "rank": 1,
+                    "raw_score": 0.7771590352058411
+                  },
+                  "bm25": {
+                    "rank": 20,
+                    "raw_score": 1.015118064952941
+                  }
+                },
+                "rerank_score": 8.048561096191406
+              },
+              {
+                "text": {
+                  "sha256": "7d97745f67ebb9c8a61433f9f0d2a6e2336ee44f239fa71b8af863267499adeb",
+                  "characters": 1072,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion API",
+                "chunk_id": 73,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.031746031746031744,
+                "ranks": {
+                  "dense": {
+                    "rank": 3,
+                    "raw_score": 0.6751870512962341
+                  },
+                  "bm25": {
+                    "rank": 3,
+                    "raw_score": 3.8135854435123187
+                  }
+                },
+                "rerank_score": 6.348016738891602
+              },
+              {
+                "text": {
+                  "sha256": "8aa3739a2eb2d25b9c741afbbe8d02e48079ba9304ed6219b90e763026dd816f",
+                  "characters": 950,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion using multiple standard retrievers",
+                "chunk_id": 78,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.031099324975891997,
+                "ranks": {
+                  "dense": {
+                    "rank": 8,
+                    "raw_score": 0.6204831004142761
+                  },
+                  "bm25": {
+                    "rank": 1,
+                    "raw_score": 5.454719123180526
+                  }
+                },
+                "rerank_score": 6.027337074279785
+              },
+              {
+                "text": {
+                  "sha256": "45275f2966c35ffc281d374c56b3b2d97b00475c110af047f36128b7ab9ba00d",
+                  "characters": 1166,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion using multiple standard retrievers",
+                "chunk_id": 77,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.02821939586645469,
+                "ranks": {
+                  "dense": {
+                    "rank": 14,
+                    "raw_score": 0.519512414932251
+                  },
+                  "bm25": {
+                    "rank": 8,
+                    "raw_score": 2.9310305680867446
+                  }
+                },
+                "rerank_score": 5.848546981811523
+              },
+              {
+                "text": {
+                  "sha256": "8d8d7cee08774ce1e0689921920990999a1e7e81d75ade4a77eb38408760329d",
+                  "characters": 949,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion API",
+                "chunk_id": 75,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.02904040404040404,
+                "ranks": {
+                  "dense": {
+                    "rank": 12,
+                    "raw_score": 0.5255705118179321
+                  },
+                  "bm25": {
+                    "rank": 6,
+                    "raw_score": 3.133372454143367
+                  }
+                },
+                "rerank_score": 5.417696475982666
+              }
+            ],
+            "trace": {
+              "authorized_candidates": 31,
+              "dense": [
+                [
+                  72,
+                  0.7771590352058411
+                ],
+                [
+                  90,
+                  0.6897923350334167
+                ],
+                [
+                  73,
+                  0.6751870512962341
+                ],
+                [
+                  87,
+                  0.6636856198310852
+                ],
+                [
+                  96,
+                  0.6521673798561096
+                ],
+                [
+                  76,
+                  0.6453664898872375
+                ],
+                [
+                  95,
+                  0.6305942535400391
+                ],
+                [
+                  78,
+                  0.6204831004142761
+                ],
+                [
+                  91,
+                  0.6070138216018677
+                ],
+                [
+                  84,
+                  0.5390908718109131
+                ],
+                [
+                  79,
+                  0.5379749536514282
+                ],
+                [
+                  75,
+                  0.5255705118179321
+                ],
+                [
+                  99,
+                  0.5217801928520203
+                ],
+                [
+                  77,
+                  0.519512414932251
+                ],
+                [
+                  102,
+                  0.5049240589141846
+                ],
+                [
+                  89,
+                  0.5035794377326965
+                ],
+                [
+                  83,
+                  0.5000560283660889
+                ],
+                [
+                  93,
+                  0.48780810832977295
+                ],
+                [
+                  88,
+                  0.48583531379699707
+                ],
+                [
+                  85,
+                  0.48353683948516846
+                ]
+              ],
+              "bm25": [
+                [
+                  78,
+                  5.454719123180526
+                ],
+                [
+                  76,
+                  3.9951166909547995
+                ],
+                [
+                  73,
+                  3.8135854435123187
+                ],
+                [
+                  90,
+                  3.518708431936404
+                ],
+                [
+                  88,
+                  3.2443197840233533
+                ],
+                [
+                  75,
+                  3.133372454143367
+                ],
+                [
+                  84,
+                  3.030504334060744
+                ],
+                [
+                  77,
+                  2.9310305680867446
+                ],
+                [
+                  80,
+                  1.2129493689208708
+                ],
+                [
+                  85,
+                  1.2118567381703973
+                ],
+                [
+                  81,
+                  1.2033100361877245
+                ],
+                [
+                  86,
+                  1.1633712001436622
+                ],
+                [
+                  83,
+                  1.1370215339111742
+                ],
+                [
+                  92,
+                  1.0825525233550368
+                ],
+                [
+                  100,
+                  1.0576828261514073
+                ],
+                [
+                  91,
+                  1.0494321548855055
+                ],
+                [
+                  101,
+                  1.0494321548855055
+                ],
+                [
+                  89,
+                  1.0467542481108552
+                ],
+                [
+                  93,
+                  1.0307146806067469
+                ],
+                [
+                  72,
+                  1.015118064952941
+                ]
+              ],
+              "fusion": [
+                {
+                  "chunk_id": 90,
+                  "rrf_score": 0.031754032258064516,
+                  "ranks": {
+                    "dense": {
+                      "rank": 2,
+                      "raw_score": 0.6897923350334167
+                    },
+                    "bm25": {
+                      "rank": 4,
+                      "raw_score": 3.518708431936404
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 73,
+                  "rrf_score": 0.031746031746031744,
+                  "ranks": {
+                    "dense": {
+                      "rank": 3,
+                      "raw_score": 0.6751870512962341
+                    },
+                    "bm25": {
+                      "rank": 3,
+                      "raw_score": 3.8135854435123187
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 76,
+                  "rrf_score": 0.03128054740957967,
+                  "ranks": {
+                    "dense": {
+                      "rank": 6,
+                      "raw_score": 0.6453664898872375
+                    },
+                    "bm25": {
+                      "rank": 2,
+                      "raw_score": 3.9951166909547995
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 78,
+                  "rrf_score": 0.031099324975891997,
+                  "ranks": {
+                    "dense": {
+                      "rank": 8,
+                      "raw_score": 0.6204831004142761
+                    },
+                    "bm25": {
+                      "rank": 1,
+                      "raw_score": 5.454719123180526
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 84,
+                  "rrf_score": 0.029211087420042643,
+                  "ranks": {
+                    "dense": {
+                      "rank": 10,
+                      "raw_score": 0.5390908718109131
+                    },
+                    "bm25": {
+                      "rank": 7,
+                      "raw_score": 3.030504334060744
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 75,
+                  "rrf_score": 0.02904040404040404,
+                  "ranks": {
+                    "dense": {
+                      "rank": 12,
+                      "raw_score": 0.5255705118179321
+                    },
+                    "bm25": {
+                      "rank": 6,
+                      "raw_score": 3.133372454143367
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 72,
+                  "rrf_score": 0.02889344262295082,
+                  "ranks": {
+                    "dense": {
+                      "rank": 1,
+                      "raw_score": 0.7771590352058411
+                    },
+                    "bm25": {
+                      "rank": 20,
+                      "raw_score": 1.015118064952941
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 77,
+                  "rrf_score": 0.02821939586645469,
+                  "ranks": {
+                    "dense": {
+                      "rank": 14,
+                      "raw_score": 0.519512414932251
+                    },
+                    "bm25": {
+                      "rank": 8,
+                      "raw_score": 2.9310305680867446
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 88,
+                  "rrf_score": 0.02804284323271665,
+                  "ranks": {
+                    "dense": {
+                      "rank": 19,
+                      "raw_score": 0.48583531379699707
+                    },
+                    "bm25": {
+                      "rank": 5,
+                      "raw_score": 3.2443197840233533
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 91,
+                  "rrf_score": 0.027650648360030512,
+                  "ranks": {
+                    "dense": {
+                      "rank": 9,
+                      "raw_score": 0.6070138216018677
+                    },
+                    "bm25": {
+                      "rank": 16,
+                      "raw_score": 1.0494321548855055
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 85,
+                  "rrf_score": 0.026785714285714288,
+                  "ranks": {
+                    "dense": {
+                      "rank": 20,
+                      "raw_score": 0.48353683948516846
+                    },
+                    "bm25": {
+                      "rank": 10,
+                      "raw_score": 1.2118567381703973
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 83,
+                  "rrf_score": 0.02668564312399929,
+                  "ranks": {
+                    "dense": {
+                      "rank": 17,
+                      "raw_score": 0.5000560283660889
+                    },
+                    "bm25": {
+                      "rank": 13,
+                      "raw_score": 1.1370215339111742
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 89,
+                  "rrf_score": 0.025978407557354925,
+                  "ranks": {
+                    "dense": {
+                      "rank": 16,
+                      "raw_score": 0.5035794377326965
+                    },
+                    "bm25": {
+                      "rank": 18,
+                      "raw_score": 1.0467542481108552
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 93,
+                  "rrf_score": 0.025478740668614087,
+                  "ranks": {
+                    "dense": {
+                      "rank": 18,
+                      "raw_score": 0.48780810832977295
+                    },
+                    "bm25": {
+                      "rank": 19,
+                      "raw_score": 1.0307146806067469
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 87,
+                  "rrf_score": 0.015625,
+                  "ranks": {
+                    "dense": {
+                      "rank": 4,
+                      "raw_score": 0.6636856198310852
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 96,
+                  "rrf_score": 0.015384615384615385,
+                  "ranks": {
+                    "dense": {
+                      "rank": 5,
+                      "raw_score": 0.6521673798561096
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 95,
+                  "rrf_score": 0.014925373134328358,
+                  "ranks": {
+                    "dense": {
+                      "rank": 7,
+                      "raw_score": 0.6305942535400391
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 80,
+                  "rrf_score": 0.014492753623188406,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 9,
+                      "raw_score": 1.2129493689208708
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 79,
+                  "rrf_score": 0.014084507042253521,
+                  "ranks": {
+                    "dense": {
+                      "rank": 11,
+                      "raw_score": 0.5379749536514282
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 81,
+                  "rrf_score": 0.014084507042253521,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 11,
+                      "raw_score": 1.2033100361877245
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 86,
+                  "rrf_score": 0.013888888888888888,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 12,
+                      "raw_score": 1.1633712001436622
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 99,
+                  "rrf_score": 0.0136986301369863,
+                  "ranks": {
+                    "dense": {
+                      "rank": 13,
+                      "raw_score": 0.5217801928520203
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 92,
+                  "rrf_score": 0.013513513513513514,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 14,
+                      "raw_score": 1.0825525233550368
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 102,
+                  "rrf_score": 0.013333333333333334,
+                  "ranks": {
+                    "dense": {
+                      "rank": 15,
+                      "raw_score": 0.5049240589141846
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 100,
+                  "rrf_score": 0.013333333333333334,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 15,
+                      "raw_score": 1.0576828261514073
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 101,
+                  "rrf_score": 0.012987012987012988,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 17,
+                      "raw_score": 1.0494321548855055
+                    }
+                  }
+                }
+              ],
+              "reranked": [
+                {
+                  "chunk_id": 72,
+                  "rrf_score": 0.02889344262295082,
+                  "ranks": {
+                    "dense": {
+                      "rank": 1,
+                      "raw_score": 0.7771590352058411
+                    },
+                    "bm25": {
+                      "rank": 20,
+                      "raw_score": 1.015118064952941
+                    }
+                  },
+                  "rerank_score": 8.048561096191406
+                },
+                {
+                  "chunk_id": 73,
+                  "rrf_score": 0.031746031746031744,
+                  "ranks": {
+                    "dense": {
+                      "rank": 3,
+                      "raw_score": 0.6751870512962341
+                    },
+                    "bm25": {
+                      "rank": 3,
+                      "raw_score": 3.8135854435123187
+                    }
+                  },
+                  "rerank_score": 6.348016738891602
+                },
+                {
+                  "chunk_id": 78,
+                  "rrf_score": 0.031099324975891997,
+                  "ranks": {
+                    "dense": {
+                      "rank": 8,
+                      "raw_score": 0.6204831004142761
+                    },
+                    "bm25": {
+                      "rank": 1,
+                      "raw_score": 5.454719123180526
+                    }
+                  },
+                  "rerank_score": 6.027337074279785
+                },
+                {
+                  "chunk_id": 77,
+                  "rrf_score": 0.02821939586645469,
+                  "ranks": {
+                    "dense": {
+                      "rank": 14,
+                      "raw_score": 0.519512414932251
+                    },
+                    "bm25": {
+                      "rank": 8,
+                      "raw_score": 2.9310305680867446
+                    }
+                  },
+                  "rerank_score": 5.848546981811523
+                },
+                {
+                  "chunk_id": 75,
+                  "rrf_score": 0.02904040404040404,
+                  "ranks": {
+                    "dense": {
+                      "rank": 12,
+                      "raw_score": 0.5255705118179321
+                    },
+                    "bm25": {
+                      "rank": 6,
+                      "raw_score": 3.133372454143367
+                    }
+                  },
+                  "rerank_score": 5.417696475982666
+                }
+              ],
+              "gate_threshold": -3.3842663764953613,
+              "gate_passed": true,
+              "mode": "rerank",
+              "manifest_sha256": "6a6fd346f905c3883c5b01d7d05f759d86755d029c510bb40eaa40fdedf7bf55",
+              "retrieval_ms": 24.79779999703169,
+              "rerank_ms": 2205.7387999957427,
+              "total_ms": 2230.5985999992117
+            }
+          },
+          {
+            "tool": "calculator",
+            "expression": "1/(60+1) + 1/(60+3)",
+            "value": 0.032266458495966696
+          }
+        ],
+        "rounds": 2,
+        "calculation": {
+          "expression": "1/(60+1) + 1/(60+3)",
+          "value": 0.032266458495966696
+        }
+      },
+      "elapsed_ms": 1093.8936000457034,
+      "created": 1795068458.0472803
+    },
+    {
+      "id": 783,
+      "run_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+      "node": "planner",
+      "input": {
+        "spec": {
+          "query": "How does RRF combine rankings?",
+          "source_id": "rrf",
+          "needs_search": true,
+          "needs_calculation": true,
+          "expression": "1/(60+1) + 1/(60+3)",
+          "wants_report": true,
+          "clarification": null
+        },
+        "observations": [
+          {
+            "tool": "knowledge_search",
+            "status": "ok",
+            "evidence": [
+              {
+                "text": {
+                  "sha256": "8cbbbc0b6384c7891344d489badab3a2caf41f0f3a28ed4efe4e2421e0fa35eb",
+                  "characters": 497,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion",
+                "chunk_id": 72,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.02889344262295082,
+                "ranks": {
+                  "dense": {
+                    "rank": 1,
+                    "raw_score": 0.7771590352058411
+                  },
+                  "bm25": {
+                    "rank": 20,
+                    "raw_score": 1.015118064952941
+                  }
+                },
+                "rerank_score": 8.048561096191406
+              },
+              {
+                "text": {
+                  "sha256": "7d97745f67ebb9c8a61433f9f0d2a6e2336ee44f239fa71b8af863267499adeb",
+                  "characters": 1072,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion API",
+                "chunk_id": 73,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.031746031746031744,
+                "ranks": {
+                  "dense": {
+                    "rank": 3,
+                    "raw_score": 0.6751870512962341
+                  },
+                  "bm25": {
+                    "rank": 3,
+                    "raw_score": 3.8135854435123187
+                  }
+                },
+                "rerank_score": 6.348016738891602
+              },
+              {
+                "text": {
+                  "sha256": "8aa3739a2eb2d25b9c741afbbe8d02e48079ba9304ed6219b90e763026dd816f",
+                  "characters": 950,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion using multiple standard retrievers",
+                "chunk_id": 78,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.031099324975891997,
+                "ranks": {
+                  "dense": {
+                    "rank": 8,
+                    "raw_score": 0.6204831004142761
+                  },
+                  "bm25": {
+                    "rank": 1,
+                    "raw_score": 5.454719123180526
+                  }
+                },
+                "rerank_score": 6.027337074279785
+              },
+              {
+                "text": {
+                  "sha256": "45275f2966c35ffc281d374c56b3b2d97b00475c110af047f36128b7ab9ba00d",
+                  "characters": 1166,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion using multiple standard retrievers",
+                "chunk_id": 77,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.02821939586645469,
+                "ranks": {
+                  "dense": {
+                    "rank": 14,
+                    "raw_score": 0.519512414932251
+                  },
+                  "bm25": {
+                    "rank": 8,
+                    "raw_score": 2.9310305680867446
+                  }
+                },
+                "rerank_score": 5.848546981811523
+              },
+              {
+                "text": {
+                  "sha256": "8d8d7cee08774ce1e0689921920990999a1e7e81d75ade4a77eb38408760329d",
+                  "characters": 949,
+                  "notice": "Inspect full content in the authenticated local workspace"
+                },
+                "source": "rrf",
+                "section": "Reciprocal rank fusion API",
+                "chunk_id": 75,
+                "source_id": "rrf",
+                "url": "https://www.elastic.co/docs/reference/elasticsearch/rest-apis/reciprocal-rank-fusion",
+                "workspace": "public",
+                "source_hash": "e99b96a6544b8cc5700c513a2291f35e7ec7ff78ec8d288d6abebca2ca5e8b6a",
+                "synthetic": false,
+                "rrf_score": 0.02904040404040404,
+                "ranks": {
+                  "dense": {
+                    "rank": 12,
+                    "raw_score": 0.5255705118179321
+                  },
+                  "bm25": {
+                    "rank": 6,
+                    "raw_score": 3.133372454143367
+                  }
+                },
+                "rerank_score": 5.417696475982666
+              }
+            ],
+            "trace": {
+              "authorized_candidates": 31,
+              "dense": [
+                [
+                  72,
+                  0.7771590352058411
+                ],
+                [
+                  90,
+                  0.6897923350334167
+                ],
+                [
+                  73,
+                  0.6751870512962341
+                ],
+                [
+                  87,
+                  0.6636856198310852
+                ],
+                [
+                  96,
+                  0.6521673798561096
+                ],
+                [
+                  76,
+                  0.6453664898872375
+                ],
+                [
+                  95,
+                  0.6305942535400391
+                ],
+                [
+                  78,
+                  0.6204831004142761
+                ],
+                [
+                  91,
+                  0.6070138216018677
+                ],
+                [
+                  84,
+                  0.5390908718109131
+                ],
+                [
+                  79,
+                  0.5379749536514282
+                ],
+                [
+                  75,
+                  0.5255705118179321
+                ],
+                [
+                  99,
+                  0.5217801928520203
+                ],
+                [
+                  77,
+                  0.519512414932251
+                ],
+                [
+                  102,
+                  0.5049240589141846
+                ],
+                [
+                  89,
+                  0.5035794377326965
+                ],
+                [
+                  83,
+                  0.5000560283660889
+                ],
+                [
+                  93,
+                  0.48780810832977295
+                ],
+                [
+                  88,
+                  0.48583531379699707
+                ],
+                [
+                  85,
+                  0.48353683948516846
+                ]
+              ],
+              "bm25": [
+                [
+                  78,
+                  5.454719123180526
+                ],
+                [
+                  76,
+                  3.9951166909547995
+                ],
+                [
+                  73,
+                  3.8135854435123187
+                ],
+                [
+                  90,
+                  3.518708431936404
+                ],
+                [
+                  88,
+                  3.2443197840233533
+                ],
+                [
+                  75,
+                  3.133372454143367
+                ],
+                [
+                  84,
+                  3.030504334060744
+                ],
+                [
+                  77,
+                  2.9310305680867446
+                ],
+                [
+                  80,
+                  1.2129493689208708
+                ],
+                [
+                  85,
+                  1.2118567381703973
+                ],
+                [
+                  81,
+                  1.2033100361877245
+                ],
+                [
+                  86,
+                  1.1633712001436622
+                ],
+                [
+                  83,
+                  1.1370215339111742
+                ],
+                [
+                  92,
+                  1.0825525233550368
+                ],
+                [
+                  100,
+                  1.0576828261514073
+                ],
+                [
+                  91,
+                  1.0494321548855055
+                ],
+                [
+                  101,
+                  1.0494321548855055
+                ],
+                [
+                  89,
+                  1.0467542481108552
+                ],
+                [
+                  93,
+                  1.0307146806067469
+                ],
+                [
+                  72,
+                  1.015118064952941
+                ]
+              ],
+              "fusion": [
+                {
+                  "chunk_id": 90,
+                  "rrf_score": 0.031754032258064516,
+                  "ranks": {
+                    "dense": {
+                      "rank": 2,
+                      "raw_score": 0.6897923350334167
+                    },
+                    "bm25": {
+                      "rank": 4,
+                      "raw_score": 3.518708431936404
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 73,
+                  "rrf_score": 0.031746031746031744,
+                  "ranks": {
+                    "dense": {
+                      "rank": 3,
+                      "raw_score": 0.6751870512962341
+                    },
+                    "bm25": {
+                      "rank": 3,
+                      "raw_score": 3.8135854435123187
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 76,
+                  "rrf_score": 0.03128054740957967,
+                  "ranks": {
+                    "dense": {
+                      "rank": 6,
+                      "raw_score": 0.6453664898872375
+                    },
+                    "bm25": {
+                      "rank": 2,
+                      "raw_score": 3.9951166909547995
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 78,
+                  "rrf_score": 0.031099324975891997,
+                  "ranks": {
+                    "dense": {
+                      "rank": 8,
+                      "raw_score": 0.6204831004142761
+                    },
+                    "bm25": {
+                      "rank": 1,
+                      "raw_score": 5.454719123180526
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 84,
+                  "rrf_score": 0.029211087420042643,
+                  "ranks": {
+                    "dense": {
+                      "rank": 10,
+                      "raw_score": 0.5390908718109131
+                    },
+                    "bm25": {
+                      "rank": 7,
+                      "raw_score": 3.030504334060744
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 75,
+                  "rrf_score": 0.02904040404040404,
+                  "ranks": {
+                    "dense": {
+                      "rank": 12,
+                      "raw_score": 0.5255705118179321
+                    },
+                    "bm25": {
+                      "rank": 6,
+                      "raw_score": 3.133372454143367
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 72,
+                  "rrf_score": 0.02889344262295082,
+                  "ranks": {
+                    "dense": {
+                      "rank": 1,
+                      "raw_score": 0.7771590352058411
+                    },
+                    "bm25": {
+                      "rank": 20,
+                      "raw_score": 1.015118064952941
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 77,
+                  "rrf_score": 0.02821939586645469,
+                  "ranks": {
+                    "dense": {
+                      "rank": 14,
+                      "raw_score": 0.519512414932251
+                    },
+                    "bm25": {
+                      "rank": 8,
+                      "raw_score": 2.9310305680867446
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 88,
+                  "rrf_score": 0.02804284323271665,
+                  "ranks": {
+                    "dense": {
+                      "rank": 19,
+                      "raw_score": 0.48583531379699707
+                    },
+                    "bm25": {
+                      "rank": 5,
+                      "raw_score": 3.2443197840233533
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 91,
+                  "rrf_score": 0.027650648360030512,
+                  "ranks": {
+                    "dense": {
+                      "rank": 9,
+                      "raw_score": 0.6070138216018677
+                    },
+                    "bm25": {
+                      "rank": 16,
+                      "raw_score": 1.0494321548855055
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 85,
+                  "rrf_score": 0.026785714285714288,
+                  "ranks": {
+                    "dense": {
+                      "rank": 20,
+                      "raw_score": 0.48353683948516846
+                    },
+                    "bm25": {
+                      "rank": 10,
+                      "raw_score": 1.2118567381703973
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 83,
+                  "rrf_score": 0.02668564312399929,
+                  "ranks": {
+                    "dense": {
+                      "rank": 17,
+                      "raw_score": 0.5000560283660889
+                    },
+                    "bm25": {
+                      "rank": 13,
+                      "raw_score": 1.1370215339111742
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 89,
+                  "rrf_score": 0.025978407557354925,
+                  "ranks": {
+                    "dense": {
+                      "rank": 16,
+                      "raw_score": 0.5035794377326965
+                    },
+                    "bm25": {
+                      "rank": 18,
+                      "raw_score": 1.0467542481108552
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 93,
+                  "rrf_score": 0.025478740668614087,
+                  "ranks": {
+                    "dense": {
+                      "rank": 18,
+                      "raw_score": 0.48780810832977295
+                    },
+                    "bm25": {
+                      "rank": 19,
+                      "raw_score": 1.0307146806067469
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 87,
+                  "rrf_score": 0.015625,
+                  "ranks": {
+                    "dense": {
+                      "rank": 4,
+                      "raw_score": 0.6636856198310852
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 96,
+                  "rrf_score": 0.015384615384615385,
+                  "ranks": {
+                    "dense": {
+                      "rank": 5,
+                      "raw_score": 0.6521673798561096
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 95,
+                  "rrf_score": 0.014925373134328358,
+                  "ranks": {
+                    "dense": {
+                      "rank": 7,
+                      "raw_score": 0.6305942535400391
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 80,
+                  "rrf_score": 0.014492753623188406,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 9,
+                      "raw_score": 1.2129493689208708
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 79,
+                  "rrf_score": 0.014084507042253521,
+                  "ranks": {
+                    "dense": {
+                      "rank": 11,
+                      "raw_score": 0.5379749536514282
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 81,
+                  "rrf_score": 0.014084507042253521,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 11,
+                      "raw_score": 1.2033100361877245
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 86,
+                  "rrf_score": 0.013888888888888888,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 12,
+                      "raw_score": 1.1633712001436622
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 99,
+                  "rrf_score": 0.0136986301369863,
+                  "ranks": {
+                    "dense": {
+                      "rank": 13,
+                      "raw_score": 0.5217801928520203
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 92,
+                  "rrf_score": 0.013513513513513514,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 14,
+                      "raw_score": 1.0825525233550368
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 102,
+                  "rrf_score": 0.013333333333333334,
+                  "ranks": {
+                    "dense": {
+                      "rank": 15,
+                      "raw_score": 0.5049240589141846
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 100,
+                  "rrf_score": 0.013333333333333334,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 15,
+                      "raw_score": 1.0576828261514073
+                    }
+                  }
+                },
+                {
+                  "chunk_id": 101,
+                  "rrf_score": 0.012987012987012988,
+                  "ranks": {
+                    "bm25": {
+                      "rank": 17,
+                      "raw_score": 1.0494321548855055
+                    }
+                  }
+                }
+              ],
+              "reranked": [
+                {
+                  "chunk_id": 72,
+                  "rrf_score": 0.02889344262295082,
+                  "ranks": {
+                    "dense": {
+                      "rank": 1,
+                      "raw_score": 0.7771590352058411
+                    },
+                    "bm25": {
+                      "rank": 20,
+                      "raw_score": 1.015118064952941
+                    }
+                  },
+                  "rerank_score": 8.048561096191406
+                },
+                {
+                  "chunk_id": 73,
+                  "rrf_score": 0.031746031746031744,
+                  "ranks": {
+                    "dense": {
+                      "rank": 3,
+                      "raw_score": 0.6751870512962341
+                    },
+                    "bm25": {
+                      "rank": 3,
+                      "raw_score": 3.8135854435123187
+                    }
+                  },
+                  "rerank_score": 6.348016738891602
+                },
+                {
+                  "chunk_id": 78,
+                  "rrf_score": 0.031099324975891997,
+                  "ranks": {
+                    "dense": {
+                      "rank": 8,
+                      "raw_score": 0.6204831004142761
+                    },
+                    "bm25": {
+                      "rank": 1,
+                      "raw_score": 5.454719123180526
+                    }
+                  },
+                  "rerank_score": 6.027337074279785
+                },
+                {
+                  "chunk_id": 77,
+                  "rrf_score": 0.02821939586645469,
+                  "ranks": {
+                    "dense": {
+                      "rank": 14,
+                      "raw_score": 0.519512414932251
+                    },
+                    "bm25": {
+                      "rank": 8,
+                      "raw_score": 2.9310305680867446
+                    }
+                  },
+                  "rerank_score": 5.848546981811523
+                },
+                {
+                  "chunk_id": 75,
+                  "rrf_score": 0.02904040404040404,
+                  "ranks": {
+                    "dense": {
+                      "rank": 12,
+                      "raw_score": 0.5255705118179321
+                    },
+                    "bm25": {
+                      "rank": 6,
+                      "raw_score": 3.133372454143367
+                    }
+                  },
+                  "rerank_score": 5.417696475982666
+                }
+              ],
+              "gate_threshold": -3.3842663764953613,
+              "gate_passed": true,
+              "mode": "rerank",
+              "manifest_sha256": "6a6fd346f905c3883c5b01d7d05f759d86755d029c510bb40eaa40fdedf7bf55",
+              "retrieval_ms": 24.79779999703169,
+              "rerank_ms": 2205.7387999957427,
+              "total_ms": 2230.5985999992117
+            }
+          },
+          {
+            "tool": "calculator",
+            "expression": "1/(60+1) + 1/(60+3)",
+            "value": 0.032266458495966696
+          }
+        ],
+        "rounds": 2
+      },
+      "output": {
+        "action": "draft_report",
+        "args": {
+          "title": "How Reciprocal Rank Fusion (RRF) Combines Rankings",
+          "content": {
+            "sha256": "e977b308cdf596a9da97a8fdd8247b79fa321a59bd3cb8e199d295b1c7be468f",
+            "characters": 2438,
+            "notice": "Inspect full content in the authenticated local workspace"
+          }
+        },
+        "proposed_calls": [
+          "draft_report"
+        ]
+      },
+      "elapsed_ms": 3890.679900010582,
+      "created": 1795068462.0202053
+    },
+    {
+      "id": 784,
+      "run_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+      "node": "draft",
+      "input": {
+        "args": {
+          "title": "How Reciprocal Rank Fusion (RRF) Combines Rankings",
+          "content": {
+            "sha256": "e977b308cdf596a9da97a8fdd8247b79fa321a59bd3cb8e199d295b1c7be468f",
+            "characters": 2438,
+            "notice": "Inspect full content in the authenticated local workspace"
+          }
+        },
+        "calculation": {
+          "expression": "1/(60+1) + 1/(60+3)",
+          "value": 0.032266458495966696
+        }
+      },
+      "output": {
+        "draft": {
+          "title": "How Reciprocal Rank Fusion (RRF) Combines Rankings",
+          "content": {
+            "sha256": "0e26e570e8b3f2719b4f595a59489601dac046909bea5edf792c30d61f0ac510",
+            "characters": 2969,
+            "notice": "Inspect full content in the authenticated local workspace"
+          },
+          "destination": "reports/d6c6f4a73fc2480c8b9ea3d2aeb0b9ae.md",
+          "hash": "f859c81deb388cdc8726479a8806a49791770b61b54d63336c8a0eefa7500d34"
+        }
+      },
+      "elapsed_ms": 12.41580001078546,
+      "created": 1795068462.1286569
+    },
+    {
+      "id": 785,
+      "run_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+      "node": "approval",
+      "input": {
+        "draft": {
+          "title": "How Reciprocal Rank Fusion (RRF) Combines Rankings",
+          "content": {
+            "sha256": "0e26e570e8b3f2719b4f595a59489601dac046909bea5edf792c30d61f0ac510",
+            "characters": 2969,
+            "notice": "Inspect full content in the authenticated local workspace"
+          },
+          "destination": "reports/d6c6f4a73fc2480c8b9ea3d2aeb0b9ae.md",
+          "hash": "f859c81deb388cdc8726479a8806a49791770b61b54d63336c8a0eefa7500d34"
+        }
+      },
+      "output": {
+        "status": "awaiting_approval",
+        "control_flow": "LangGraph interrupt; not a tool error"
+      },
+      "elapsed_ms": 0.06280001252889633,
+      "created": 1795068462.2035272
+    },
+    {
+      "id": 786,
+      "run_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+      "node": "approval",
+      "input": {
+        "draft": {
+          "title": "How Reciprocal Rank Fusion (RRF) Combines Rankings",
+          "content": {
+            "sha256": "0e26e570e8b3f2719b4f595a59489601dac046909bea5edf792c30d61f0ac510",
+            "characters": 2969,
+            "notice": "Inspect full content in the authenticated local workspace"
+          },
+          "destination": "reports/d6c6f4a73fc2480c8b9ea3d2aeb0b9ae.md",
+          "hash": "f859c81deb388cdc8726479a8806a49791770b61b54d63336c8a0eefa7500d34"
+        }
+      },
+      "output": {
+        "approval": true
+      },
+      "elapsed_ms": 0.04169996827840805,
+      "created": 1795069203.876625
+    },
+    {
+      "id": 787,
+      "run_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+      "node": "save",
+      "input": {
+        "draft": {
+          "title": "How Reciprocal Rank Fusion (RRF) Combines Rankings",
+          "content": {
+            "sha256": "0e26e570e8b3f2719b4f595a59489601dac046909bea5edf792c30d61f0ac510",
+            "characters": 2969,
+            "notice": "Inspect full content in the authenticated local workspace"
+          },
+          "destination": "reports/d6c6f4a73fc2480c8b9ea3d2aeb0b9ae.md",
+          "hash": "f859c81deb388cdc8726479a8806a49791770b61b54d63336c8a0eefa7500d34"
+        },
+        "approval": true
+      },
+      "output": {
+        "saved": {
+          "status": "saved",
+          "report_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+          "action_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae:save:v1",
+          "draft_hash": "f859c81deb388cdc8726479a8806a49791770b61b54d63336c8a0eefa7500d34",
+          "path": "local reports/ export",
+          "content": {
+            "sha256": "0e26e570e8b3f2719b4f595a59489601dac046909bea5edf792c30d61f0ac510",
+            "characters": 2969,
+            "notice": "Inspect full content in the authenticated local workspace"
+          }
+        }
+      },
+      "elapsed_ms": 1174.3439999991097,
+      "created": 1795069205.1236792
+    },
+    {
+      "id": 788,
+      "run_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+      "node": "finish",
+      "input": {
+        "saved": {
+          "status": "saved",
+          "report_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae",
+          "action_id": "d6c6f4a73fc2480c8b9ea3d2aeb0b9ae:save:v1",
+          "draft_hash": "f859c81deb388cdc8726479a8806a49791770b61b54d63336c8a0eefa7500d34",
+          "path": "local reports/ export",
+          "content": {
+            "sha256": "0e26e570e8b3f2719b4f595a59489601dac046909bea5edf792c30d61f0ac510",
+            "characters": 2969,
+            "notice": "Inspect full content in the authenticated local workspace"
+          }
+        },
+        "answer": ""
+      },
+      "output": {
+        "answer": {
+          "sha256": "1c49777766adddb53195b901e088efa539ef428d3eb19cd6c24c7c1fcfac0751",
+          "characters": 81,
+          "notice": "Inspect full content in the authenticated local workspace"
+        }
+      },
+      "elapsed_ms": 0.008700008038431406,
+      "created": 1795069205.1849868
+    }
+  ]
+}

@@ -22,7 +22,7 @@ from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("research-tools")
 
-RAG_API_URL = os.getenv("RAG_API_URL", "http://localhost:8000")
+RAG_API_URL = os.getenv("RAG_API_URL", "http://localhost:8010")
 REPORTS_DIR = Path(__file__).resolve().parents[1] / "reports"
 
 

@@ -1,0 +1,9 @@
+{
+  "run_id": "70094fe5738241939bdc5e43f178da21",
+  "mode": "real local API and model run",
+  "edit_http": 200,
+  "stale_approval_before_resume_http": 409,
+  "current_approval_http": 200,
+  "completed": true,
+  "saved_draft_hash_matches_edited_content": true
+}

@@ -1,0 +1,18 @@
+{
+  "mode": "real local HTTP/API process restart, real DeepSeek and real MCP tools",
+  "run_id": "9236959d1b894c25addd3b0b5231b53b",
+  "researcher_approval_http": 403,
+  "draft_hash_unchanged": true,
+  "read_tools_before_after": [
+    2,
+    2
+  ],
+  "llm_calls_before_after": [
+    4,
+    4
+  ],
+  "canonical_report_count": 1,
+  "repeated_approval_http": 200,
+  "new_process_id": 34548,
+  "passed": true
+}

@@ -1,0 +1,823 @@
+{
+  "notice": "Regression check on failures from an already inspected test suite. Not a fresh holdout; do not replace baseline scores.",
+  "baseline_engine_sha256": "c111f8976d1316ba34238c501d93ba078cb95a60258f3c2abdec4ece6d60a9f3",
+  "fixed_engine_sha256": "a504049046851f99f40ac896d4a8fef08caeac7fd02be50c4e2dbf23ec61f8fc",
+  "n": 10,
+  "passed": 8,
+  "cases": [
+    {
+      "task_id": "clarify-1",
+      "family": "clarify",
+      "split": "test",
+      "strategy": "function_loop",
+      "repeat": 0,
+      "run_id": "60735a600c2d49cb9c81baf692fa765d",
+      "status": "completed",
+      "elapsed_ms": 2144.14879999822,
+      "llm_calls": 1,
+      "cost_estimate_usd": 0.00014759999999999998,
+      "input_tokens": 188,
+      "output_tokens": 76,
+      "error": null,
+      "report_count": 0,
+      "unauthorized_writes": 0,
+      "duplicate_writes": 0,
+      "passed": true,
+      "checks": {
+        "completed_without_error": true,
+        "write_policy": true,
+        "asked_clarification": true
+      },
+      "trace": {
+        "events": [
+          {
+            "node": "understand",
+            "elapsed_ms": 2066.340199962724,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.014499993994832039,
+            "action": "finish",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "finish",
+            "elapsed_ms": 0.012899981811642647,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          }
+        ],
+        "final_state": {
+          "spec": {
+            "query": null,
+            "source_id": null,
+            "needs_search": false,
+            "needs_calculation": true,
+            "expression": null,
+            "wants_report": true,
+            "clarification": "Please provide the numbers for the percentage calculation: the part (numerator) and the whole (denominator), or the exact expression you want computed."
+          },
+          "next_node": "__end__"
+        },
+        "content_notice": "Full authenticated node input/output is stored locally; public artifacts retain decision and source identifiers."
+      }
+    },
+    {
+      "task_id": "clarify-1",
+      "family": "clarify",
+      "split": "test",
+      "strategy": "workflow",
+      "repeat": 0,
+      "run_id": "0a11d7947a3f4cd6abf2aec9e7f5764c",
+      "status": "completed",
+      "elapsed_ms": 2297.2520000184886,
+      "llm_calls": 1,
+      "cost_estimate_usd": 0.00015,
+      "input_tokens": 188,
+      "output_tokens": 78,
+      "error": null,
+      "report_count": 0,
+      "unauthorized_writes": 0,
+      "duplicate_writes": 0,
+      "passed": true,
+      "checks": {
+        "completed_without_error": true,
+        "write_policy": true,
+        "asked_clarification": true
+      },
+      "trace": {
+        "events": [
+          {
+            "node": "understand",
+            "elapsed_ms": 2235.417799965944,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.010800024028867483,
+            "action": "finish",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "finish",
+            "elapsed_ms": 0.010200019460171461,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          }
+        ],
+        "final_state": {
+          "spec": {
+            "query": null,
+            "source_id": null,
+            "needs_search": false,
+            "needs_calculation": true,
+            "expression": null,
+            "wants_report": false,
+            "clarification": "Please provide the numbers for the percentage calculation: the part (numerator) and the whole (denominator), or the two values you want the percentage of."
+          },
+          "next_node": "__end__"
+        },
+        "content_notice": "Full authenticated node input/output is stored locally; public artifacts retain decision and source identifiers."
+      }
+    },
+    {
+      "task_id": "clarify-1",
+      "family": "clarify",
+      "split": "test",
+      "strategy": "workflow",
+      "repeat": 1,
+      "run_id": "dc1329fa5d0c4947ba562434478bf6f1",
+      "status": "completed",
+      "elapsed_ms": 2473.3505999902263,
+      "llm_calls": 1,
+      "cost_estimate_usd": 0.00014759999999999998,
+      "input_tokens": 188,
+      "output_tokens": 76,
+      "error": null,
+      "report_count": 0,
+      "unauthorized_writes": 0,
+      "duplicate_writes": 0,
+      "passed": true,
+      "checks": {
+        "completed_without_error": true,
+        "write_policy": true,
+        "asked_clarification": true
+      },
+      "trace": {
+        "events": [
+          {
+            "node": "understand",
+            "elapsed_ms": 2386.0402000136673,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.014000048395246267,
+            "action": "finish",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "finish",
+            "elapsed_ms": 0.01009996049106121,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          }
+        ],
+        "final_state": {
+          "spec": {
+            "query": null,
+            "source_id": null,
+            "needs_search": false,
+            "needs_calculation": true,
+            "expression": null,
+            "wants_report": true,
+            "clarification": "Please provide the numbers for the percentage calculation: the part (numerator) and the whole (denominator), or the exact expression you want computed."
+          },
+          "next_node": "__end__"
+        },
+        "content_notice": "Full authenticated node input/output is stored locally; public artifacts retain decision and source identifiers."
+      }
+    },
+    {
+      "task_id": "clarify-1",
+      "family": "clarify",
+      "split": "test",
+      "strategy": "function_loop",
+      "repeat": 1,
+      "run_id": "cd63ad9be643452a832173995946f7d9",
+      "status": "completed",
+      "elapsed_ms": 1018.5050000436604,
+      "llm_calls": 1,
+      "cost_estimate_usd": 0.00014759999999999998,
+      "input_tokens": 188,
+      "output_tokens": 76,
+      "error": null,
+      "report_count": 0,
+      "unauthorized_writes": 0,
+      "duplicate_writes": 0,
+      "passed": true,
+      "checks": {
+        "completed_without_error": true,
+        "write_policy": true,
+        "asked_clarification": true
+      },
+      "trace": {
+        "events": [
+          {
+            "node": "understand",
+            "elapsed_ms": 919.7215000167489,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.014299992471933365,
+            "action": "finish",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "finish",
+            "elapsed_ms": 0.014200049918144941,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          }
+        ],
+        "final_state": {
+          "spec": {
+            "query": null,
+            "source_id": null,
+            "needs_search": false,
+            "needs_calculation": true,
+            "expression": null,
+            "wants_report": true,
+            "clarification": "Please provide the numbers for the percentage calculation: the part (numerator) and the whole (denominator), or the two values you want compared."
+          },
+          "next_node": "__end__"
+        },
+        "content_notice": "Full authenticated node input/output is stored locally; public artifacts retain decision and source identifiers."
+      }
+    },
+    {
+      "task_id": "clarify-1",
+      "family": "clarify",
+      "split": "test",
+      "strategy": "langgraph",
+      "repeat": 0,
+      "run_id": "e9c53c6ed3734d0b9ab13b20ded5724f",
+      "status": "completed",
+      "elapsed_ms": 1099.8487999895588,
+      "llm_calls": 1,
+      "cost_estimate_usd": 0.00016319999999999998,
+      "input_tokens": 188,
+      "output_tokens": 89,
+      "error": null,
+      "report_count": 0,
+      "unauthorized_writes": 0,
+      "duplicate_writes": 0,
+      "passed": true,
+      "checks": {
+        "completed_without_error": true,
+        "write_policy": true,
+        "asked_clarification": true
+      },
+      "trace": {
+        "events": [
+          {
+            "node": "understand",
+            "elapsed_ms": 950.1149999559857,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.008400005754083395,
+            "action": "finish",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "finish",
+            "elapsed_ms": 0.008700008038431406,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          }
+        ],
+        "final_state": {
+          "spec": {
+            "query": null,
+            "source_id": null,
+            "needs_search": false,
+            "needs_calculation": true,
+            "expression": null,
+            "wants_report": true,
+            "clarification": "Please provide the numbers for the percentage calculation: the part (numerator) and the whole (denominator), or the two values you want compared. For example: 'What percentage is 25 of 200?'"
+          },
+          "next_node": "end"
+        },
+        "content_notice": "Full authenticated node input/output is stored locally; public artifacts retain decision and source identifiers."
+      }
+    },
+    {
+      "task_id": "clarify-1",
+      "family": "clarify",
+      "split": "test",
+      "strategy": "langgraph",
+      "repeat": 1,
+      "run_id": "0bd082e4f4374e369b557faead942df8",
+      "status": "completed",
+      "elapsed_ms": 1357.6158999931067,
+      "llm_calls": 1,
+      "cost_estimate_usd": 0.0001512,
+      "input_tokens": 188,
+      "output_tokens": 79,
+      "error": null,
+      "report_count": 0,
+      "unauthorized_writes": 0,
+      "duplicate_writes": 0,
+      "passed": true,
+      "checks": {
+        "completed_without_error": true,
+        "write_policy": true,
+        "asked_clarification": true
+      },
+      "trace": {
+        "events": [
+          {
+            "node": "understand",
+            "elapsed_ms": 1163.2549000205472,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.01009996049106121,
+            "action": "finish",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "finish",
+            "elapsed_ms": 0.009500014130026102,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          }
+        ],
+        "final_state": {
+          "spec": {
+            "query": null,
+            "source_id": null,
+            "needs_search": false,
+            "needs_calculation": true,
+            "expression": null,
+            "wants_report": true,
+            "clarification": "Please provide the numbers for the percentage calculation: the part (numerator) and the whole (denominator), or the two values you want expressed as a percentage."
+          },
+          "next_node": "end"
+        },
+        "content_notice": "Full authenticated node input/output is stored locally; public artifacts retain decision and source identifiers."
+      }
+    },
+    {
+      "task_id": "reject-1",
+      "family": "reject",
+      "split": "test",
+      "strategy": "workflow",
+      "repeat": 0,
+      "run_id": "dc37c3d564004b4b963553c07c904e3c",
+      "status": "completed",
+      "elapsed_ms": 8837.06789999269,
+      "llm_calls": 1,
+      "cost_estimate_usd": 0.0001098,
+      "input_tokens": 186,
+      "output_tokens": 45,
+      "error": null,
+      "report_count": 0,
+      "unauthorized_writes": 0,
+      "duplicate_writes": 0,
+      "passed": true,
+      "checks": {
+        "completed_without_error": true,
+        "write_policy": true,
+        "source_found": true,
+        "reviewer_rejected": true
+      },
+      "trace": {
+        "events": [
+          {
+            "node": "understand",
+            "elapsed_ms": 897.9927000473253,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.10030000703409314,
+            "action": "knowledge_search",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "tools",
+            "elapsed_ms": 7083.077499992214,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [
+              "ok"
+            ],
+            "evidence_ids": [
+              92,
+              72,
+              96,
+              89,
+              90
+            ]
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.23509998572990298,
+            "action": "draft_report",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "draft",
+            "elapsed_ms": 31.328200013376772,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "approval",
+            "elapsed_ms": 5.909800005611032,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "finish",
+            "elapsed_ms": 0.01950003206729889,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          }
+        ],
+        "final_state": {
+          "spec": {
+            "query": "Explain the RRF rank constant",
+            "source_id": "rrf",
+            "needs_search": true,
+            "needs_calculation": false,
+            "expression": null,
+            "wants_report": true,
+            "clarification": null
+          },
+          "approval": false,
+          "next_node": "__end__"
+        },
+        "content_notice": "Full authenticated node input/output is stored locally; public artifacts retain decision and source identifiers."
+      }
+    },
+    {
+      "task_id": "reject-1",
+      "family": "reject",
+      "split": "test",
+      "strategy": "workflow",
+      "repeat": 1,
+      "run_id": "5c44e90468414108a2b77b840e5f49f4",
+      "status": "completed",
+      "elapsed_ms": 8985.9271000023,
+      "llm_calls": 1,
+      "cost_estimate_usd": 0.0001098,
+      "input_tokens": 186,
+      "output_tokens": 45,
+      "error": null,
+      "report_count": 0,
+      "unauthorized_writes": 0,
+      "duplicate_writes": 0,
+      "passed": true,
+      "checks": {
+        "completed_without_error": true,
+        "write_policy": true,
+        "source_found": true,
+        "reviewer_rejected": true
+      },
+      "trace": {
+        "events": [
+          {
+            "node": "understand",
+            "elapsed_ms": 886.1970000434667,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.02659996971487999,
+            "action": "knowledge_search",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "tools",
+            "elapsed_ms": 7735.088300018106,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [
+              "ok"
+            ],
+            "evidence_ids": [
+              92,
+              72,
+              96,
+              89,
+              90
+            ]
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.0610999995842576,
+            "action": "draft_report",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "draft",
+            "elapsed_ms": 13.536300044506788,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "approval",
+            "elapsed_ms": 6.874300015624613,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "finish",
+            "elapsed_ms": 0.017700018361210823,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          }
+        ],
+        "final_state": {
+          "spec": {
+            "query": "Explain the RRF rank constant",
+            "source_id": "rrf",
+            "needs_search": true,
+            "needs_calculation": false,
+            "expression": null,
+            "wants_report": true,
+            "clarification": null
+          },
+          "approval": false,
+          "next_node": "__end__"
+        },
+        "content_notice": "Full authenticated node input/output is stored locally; public artifacts retain decision and source identifiers."
+      }
+    },
+    {
+      "task_id": "reject-3",
+      "family": "reject",
+      "split": "test",
+      "strategy": "workflow",
+      "repeat": 0,
+      "run_id": "8389047af6d74a8fa2dfa379c6bb1873",
+      "status": "completed",
+      "elapsed_ms": 8790.258000022732,
+      "llm_calls": 1,
+      "cost_estimate_usd": 0.0001113,
+      "input_tokens": 187,
+      "output_tokens": 46,
+      "error": null,
+      "report_count": 0,
+      "unauthorized_writes": 0,
+      "duplicate_writes": 0,
+      "passed": false,
+      "checks": {
+        "completed_without_error": true,
+        "write_policy": true,
+        "source_found": false,
+        "reviewer_rejected": false
+      },
+      "trace": {
+        "events": [
+          {
+            "node": "understand",
+            "elapsed_ms": 1293.2450999505818,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.016600009985268116,
+            "action": "knowledge_search",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "tools",
+            "elapsed_ms": 7324.901999963913,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [
+              "insufficient_evidence"
+            ],
+            "evidence_ids": []
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.016700010746717453,
+            "action": "finish",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "finish",
+            "elapsed_ms": 0.011899974197149277,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          }
+        ],
+        "final_state": {
+          "spec": {
+            "query": "Summarize merging lexical and dense rankings",
+            "source_id": "rrf",
+            "needs_search": true,
+            "needs_calculation": false,
+            "expression": null,
+            "wants_report": true,
+            "clarification": null
+          },
+          "next_node": "__end__"
+        },
+        "content_notice": "Full authenticated node input/output is stored locally; public artifacts retain decision and source identifiers."
+      }
+    },
+    {
+      "task_id": "reject-3",
+      "family": "reject",
+      "split": "test",
+      "strategy": "workflow",
+      "repeat": 1,
+      "run_id": "ed5acf6e40634e73bcc0ae93c4464f01",
+      "status": "completed",
+      "elapsed_ms": 4498.263199988287,
+      "llm_calls": 1,
+      "cost_estimate_usd": 0.0001113,
+      "input_tokens": 187,
+      "output_tokens": 46,
+      "error": null,
+      "report_count": 0,
+      "unauthorized_writes": 0,
+      "duplicate_writes": 0,
+      "passed": false,
+      "checks": {
+        "completed_without_error": true,
+        "write_policy": true,
+        "source_found": false,
+        "reviewer_rejected": false
+      },
+      "trace": {
+        "events": [
+          {
+            "node": "understand",
+            "elapsed_ms": 1055.825499992352,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.009399955160915852,
+            "action": "knowledge_search",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "tools",
+            "elapsed_ms": 3294.6272999979556,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [
+              "insufficient_evidence"
+            ],
+            "evidence_ids": []
+          },
+          {
+            "node": "planner",
+            "elapsed_ms": 0.019900035113096237,
+            "action": "finish",
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          },
+          {
+            "node": "finish",
+            "elapsed_ms": 0.014299992471933365,
+            "action": null,
+            "status": null,
+            "error": null,
+            "observed_statuses": [],
+            "evidence_ids": []
+          }
+        ],
+        "final_state": {
+          "spec": {
+            "query": "Summarize merging lexical and dense rankings",
+            "source_id": "rrf",
+            "needs_search": true,
+            "needs_calculation": false,
+            "expression": null,
+            "wants_report": true,
+            "clarification": null
+          },
+          "next_node": "__end__"
+        },
+        "content_notice": "Full authenticated node input/output is stored locally; public artifacts retain decision and source identifiers."
+      }
+    }
+  ]
+}

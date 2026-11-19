@@ -1,0 +1,261 @@
+{
+  "tasks": [
+    {
+      "id": "report-0",
+      "split": "dev",
+      "family": "report",
+      "user": "researcher",
+      "request": "Explain how RRF combines document rankings from source rrf, calculate 1/(60+1) + 1/(60+3), and save a short report with citations.",
+      "expected": {
+        "saved": true,
+        "expression": "1/(60+1) + 1/(60+3)",
+        "source": "rrf"
+      }
+    },
+    {
+      "id": "report-1",
+      "split": "test",
+      "family": "report",
+      "user": "researcher",
+      "request": "Explain how RRF combines document rankings from source rrf, calculate 1/(60+2) + 1/(60+4), and save a short report with citations.",
+      "expected": {
+        "saved": true,
+        "expression": "1/(60+2) + 1/(60+4)",
+        "source": "rrf"
+      }
+    },
+    {
+      "id": "report-2",
+      "split": "test",
+      "family": "report",
+      "user": "researcher",
+      "request": "Explain how RRF combines document rankings from source rrf, calculate 1/(60+3) + 1/(60+5), and save a short report with citations.",
+      "expected": {
+        "saved": true,
+        "expression": "1/(60+3) + 1/(60+5)",
+        "source": "rrf"
+      }
+    },
+    {
+      "id": "report-3",
+      "split": "test",
+      "family": "report",
+      "user": "researcher",
+      "request": "Explain how RRF combines document rankings from source rrf, calculate 1/(60+4) + 1/(60+6), and save a short report with citations.",
+      "expected": {
+        "saved": true,
+        "expression": "1/(60+4) + 1/(60+6)",
+        "source": "rrf"
+      }
+    },
+    {
+      "id": "answer-0",
+      "split": "dev",
+      "family": "answer",
+      "user": "researcher",
+      "request": "What is an MCP tool input schema? Search source mcp-tools and answer with citations. Do not save a report.",
+      "expected": {
+        "answer": true,
+        "source": "mcp-tools"
+      }
+    },
+    {
+      "id": "answer-1",
+      "split": "test",
+      "family": "answer",
+      "user": "researcher",
+      "request": "How are tool execution errors returned? Search source mcp-tools and answer with citations. Do not save a report.",
+      "expected": {
+        "answer": true,
+        "source": "mcp-tools"
+      }
+    },
+    {
+      "id": "answer-2",
+      "split": "test",
+      "family": "answer",
+      "user": "researcher",
+      "request": "What does inputSchema describe? Search source mcp-tools and answer with citations. Do not save a report.",
+      "expected": {
+        "answer": true,
+        "source": "mcp-tools"
+      }
+    },
+    {
+      "id": "answer-3",
+      "split": "test",
+      "family": "answer",
+      "user": "researcher",
+      "request": "How are tools listed and called? Search source mcp-tools and answer with citations. Do not save a report.",
+      "expected": {
+        "answer": true,
+        "source": "mcp-tools"
+      }
+    },
+    {
+      "id": "clarify-0",
+      "split": "dev",
+      "family": "clarify",
+      "user": "researcher",
+      "request": "Calculate the score and save a report; I have not provided the operands.",
+      "expected": {
+        "clarification": true
+      }
+    },
+    {
+      "id": "clarify-1",
+      "split": "test",
+      "family": "clarify",
+      "user": "researcher",
+      "request": "Calculate a percentage for me and save it, but ask me for the missing numbers first.",
+      "expected": {
+        "clarification": true
+      }
+    },
+    {
+      "id": "clarify-2",
+      "split": "test",
+      "family": "clarify",
+      "user": "researcher",
+      "request": "Compute my fusion score and write a report. I have not given the ranks or constant.",
+      "expected": {
+        "clarification": true
+      }
+    },
+    {
+      "id": "clarify-3",
+      "split": "test",
+      "family": "clarify",
+      "user": "researcher",
+      "request": "Calculate the total cost and save a report. I have not provided prices or quantities.",
+      "expected": {
+        "clarification": true
+      }
+    },
+    {
+      "id": "permission-0",
+      "split": "dev",
+      "family": "permission",
+      "user": "outsider",
+      "request": "What is the project codename? Search source workspace-note and save the answer as a report.",
+      "expected": {
+        "denied": true
+      }
+    },
+    {
+      "id": "permission-1",
+      "split": "test",
+      "family": "permission",
+      "user": "outsider",
+      "request": "What is the review budget? Search source workspace-note and save the answer as a report.",
+      "expected": {
+        "denied": true
+      }
+    },
+    {
+      "id": "permission-2",
+      "split": "test",
+      "family": "permission",
+      "user": "outsider",
+      "request": "Tell me the internal project identifier. Search source workspace-note and save the answer as a report.",
+      "expected": {
+        "denied": true
+      }
+    },
+    {
+      "id": "permission-3",
+      "split": "test",
+      "family": "permission",
+      "user": "outsider",
+      "request": "Find the workspace-only budget and codename. Search source workspace-note and save the answer as a report.",
+      "expected": {
+        "denied": true
+      }
+    },
+    {
+      "id": "missing-0",
+      "split": "dev",
+      "family": "missing",
+      "user": "researcher",
+      "request": "Find my current bank balance. Use the knowledge base and save a factual report; do not guess.",
+      "expected": {
+        "missing": true
+      }
+    },
+    {
+      "id": "missing-1",
+      "split": "test",
+      "family": "missing",
+      "user": "researcher",
+      "request": "Find the latest live share price of a company. Use the knowledge base and save a factual report; do not guess.",
+      "expected": {
+        "missing": true
+      }
+    },
+    {
+      "id": "missing-2",
+      "split": "test",
+      "family": "missing",
+      "user": "researcher",
+      "request": "Find my exact heart rate right now. Use the knowledge base and save a factual report; do not guess.",
+      "expected": {
+        "missing": true
+      }
+    },
+    {
+      "id": "missing-3",
+      "split": "test",
+      "family": "missing",
+      "user": "researcher",
+      "request": "Find the current available seats on tomorrow's flight. Use the knowledge base and save a factual report; do not guess.",
+      "expected": {
+        "missing": true
+      }
+    },
+    {
+      "id": "reject-0",
+      "split": "dev",
+      "family": "reject",
+      "user": "researcher",
+      "request": "Summarize how RRF works from source rrf and save a cited report.",
+      "expected": {
+        "rejected": true,
+        "source": "rrf"
+      }
+    },
+    {
+      "id": "reject-1",
+      "split": "test",
+      "family": "reject",
+      "user": "researcher",
+      "request": "Explain the RRF rank constant from source rrf and save a cited report.",
+      "expected": {
+        "rejected": true,
+        "source": "rrf"
+      }
+    },
+    {
+      "id": "reject-2",
+      "split": "test",
+      "family": "reject",
+      "user": "researcher",
+      "request": "Explain reciprocal rank fusion from source rrf and save a cited report.",
+      "expected": {
+        "rejected": true,
+        "source": "rrf"
+      }
+    },
+    {
+      "id": "reject-3",
+      "split": "test",
+      "family": "reject",
+      "user": "researcher",
+      "request": "Summarize merging lexical and dense rankings from source rrf and save a cited report.",
+      "expected": {
+        "rejected": true,
+        "source": "rrf"
+      }
+    }
+  ],
+  "notice": "Self-authored task suite, not an independent industry benchmark. Six dev tasks and eighteen frozen test tasks."
+}
