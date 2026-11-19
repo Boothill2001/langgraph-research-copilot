@@ -1,0 +1,6 @@
+{
+  "mode": "real MCP tool against deliberately unreachable loopback endpoint",
+  "status": "error",
+  "evidence": [],
+  "passed": true
+}

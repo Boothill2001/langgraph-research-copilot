@@ -155,6 +155,8 @@ SQLite is the canonical report store, keyed uniquely by action/run. Markdown exp
 
 RAG outages, forbidden sources and insufficient evidence stop source-backed report creation. The calculator rejects code, excessive exponents, non-finite results and unbounded values. Tools have a per-request round cap of eight. Provider calls have time/output/context limits and no hidden retry; the read-only RAG tool retries transient connection/timeout failures at most twice.
 
+Two additional controlled live checks are recorded: the real MCP tool returned `error` with no evidence against a deliberately unreachable RAG endpoint, and DeepSeek retrieved the synthetic malicious-instruction fixture but completed with **zero saved reports**. These are narrow boundary checks, not a comprehensive prompt-injection robustness benchmark. [MCP outage check](artifacts/outage-verification.json) · [Adversarial fixture check](artifacts/injection-verification.json) · [Edited-draft approval check](artifacts/draft-edit-verification.json)
+
 API usage is recorded per call. A SQLite transaction reserves a conservative maximum before a new call, under a **$5 cumulative local budget**. Costs use the officially checked **2026-11-19 peak cache-miss Flash rates**, ignore discounts, and are estimates rather than invoices. Unresolved calls retain their reservation. The provider's returned model ID and actual token usage are stored locally. [Pricing source](https://api-docs.deepseek.com/quick_start/pricing/)
 
 ## Verify and reproduce
