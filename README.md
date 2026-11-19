@@ -142,6 +142,7 @@ The launcher checks readiness rather than sleeping a fixed interval. It prepares
 Demo accounts: `researcher`, `reviewer`, `outsider`; shared development password `learn-local-only`. Override with `COPILOT_DEMO_PASSWORD`. These seeded accounts and signed tokens are a **loopback-only learning implementation, not enterprise SSO**. Do not expose the services publicly with default credentials.
 
 - **Learn:** Execute next node performs actual work once, then pauses. This educational pause is distinct from write approval.
+- **Follow latest execution:** Enabled by default, so new node output replaces the previous result. Node buttons intentionally open history; the interface labels historical views. Executing the next node returns to the live latest result.
 - **Run:** Execute continuously until completion, failure or required review.
 - **Replay:** Inspect the recorded run without API calls. Public replay retains source/content hashes; live authenticated traces show complete local content.
 - **Data → index:** Inspect official sources, chunks, ACL metadata and the embedding/index boundary.

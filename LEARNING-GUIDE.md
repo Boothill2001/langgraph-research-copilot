@@ -18,6 +18,8 @@ Tự trả lời: Khi một tài liệu thay đổi, vì sao phải tạo snapsh
 
 Bấm node đầu. So sánh request với `spec`: query, nguồn cần tìm, biểu thức cần tính và có cần báo cáo hay không. Model tách yêu cầu; backend vẫn kiểm tra schema. Không có trường nào cho model tự cấp role.
 
+Giữ **Follow latest execution / Theo kết quả mới nhất** bật để output tự chuyển theo mỗi lần chạy. Các nút 01–07 chỉ mở lịch sử của node; chúng không chạy node đó. Khi bạn xem bước cũ, UI sẽ báo đang xem lịch sử. Bấm **Execute next node** sẽ tự quay về kết quả mới nhất.
+
 Tự trả lời: Nếu yêu cầu “tính giúp phần trăm” nhưng không có số, hệ thống nên hỏi gì? Việc hiểu intent sai ảnh hưởng các node sau ra sao?
 
 ## 3. Planner: chọn bước tiếp theo

@@ -7,8 +7,11 @@ import statistics
 
 import requests
 import streamlit as st
+import sys
 
 ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT / "src"))
+from copilot.inspection import current_execution, execution_choices
 API = os.getenv("COPILOT_API_URL", "http://127.0.0.1:8529")
 RAG = os.getenv("RAG_API_URL", "http://127.0.0.1:8011")
 st.set_page_config(page_title="Research Copilot · Node Workbench", page_icon="↳", layout="wide")
@@ -102,6 +105,11 @@ with workspace:
             rid = st.session_state.get("run_id")
             if not rid:
                 return
+            follow_key = "follow-latest-" + rid
+            selected_key = "selected-node-" + rid
+            if st.session_state.pop("reset-inspection-" + rid, False):
+                st.session_state[follow_key] = True
+                st.session_state[selected_key] = None
             try:
                 r = api("/runs/" + rid)
             except Exception as exc:
@@ -120,6 +128,7 @@ with workspace:
                 if st.button(t("Execute next node →", "Chạy node tiếp →") if mode == "Learn" else t("Run until approval →", "Chạy đến bước duyệt →"), disabled=busy or user["sub"] != r["owner"], type="primary", key="advance"):
                     try:
                         api(f"/runs/{rid}/advance", "POST", {"continuous": mode == "Run"})
+                        st.session_state["reset-inspection-" + rid] = True
                         st.rerun(scope="fragment")
                     except Exception as exc:
                         st.error(str(exc))
@@ -131,16 +140,25 @@ with workspace:
             for c, name, label in zip(st.columns(7), node_names, node_labels):
                 count = sum(e["node"] == name for e in events)
                 if c.button(label, key="node-" + name, width='stretch'):
-                    st.session_state["selected_node"] = name
+                    st.session_state[selected_key] = name
+                    st.session_state[follow_key] = False
                 c.caption(str(count) + t(" executions", " lần chạy"))
-            chosen = st.session_state.get("selected_node")
-            available = [e for e in events if e["node"] == chosen] if chosen else events
-            if available:
-                event = available[-1]
-                if len(available) > 1:
-                    index = st.select_slider(t("Node occurrence", "Lần thực thi node"), options=list(range(len(available))), value=len(available)-1, key="occurrence-"+str(chosen))
-                    event = available[index]
-                st.subheader(event["node"] + " · " + f'{event["elapsed_ms"]:,.0f} ms')
+            st.caption(t("Node buttons inspect history. Execute next node runs the workflow and follows its new result.", "Các nút node dùng để xem lại lịch sử. Chạy node tiếp mới thực thi workflow và hiện kết quả vừa chạy."))
+            follow = st.toggle(t("Follow latest execution", "Theo kết quả mới nhất"), value=True, key=follow_key)
+            chosen = st.session_state.get(selected_key)
+            available = execution_choices(events, chosen)
+            history_id = None
+            if not follow and available:
+                history_id = st.selectbox(t("Execution history", "Lịch sử thực thi"), [e["id"] for e in available],
+                    index=len(available)-1, key="history-"+rid+"-"+str(chosen),
+                    format_func=lambda eid: next(f'#{events.index(e)+1} · {e["node"]}'+(' → '+e['input']['action'] if e['input'].get('action') else '') for e in available if e['id']==eid))
+            event = current_execution(events, follow, chosen, history_id)
+            if event is not None:
+                if not follow and event["id"] != events[-1]["id"]:
+                    st.info(t("Viewing history. The workflow has advanced beyond this execution. Turn on Follow latest execution to see the current result.", "Bạn đang xem lịch sử. Workflow đã chạy qua bước này. Bật Theo kết quả mới nhất để xem kết quả hiện tại."))
+                number = next(i for i,e in enumerate(events,1) if e["id"] == event["id"])
+                action = event["input"].get("action") or event["output"].get("action")
+                st.subheader(f'#{number} · '+event["node"]+(' → '+action if action else '')+" · " + f'{event["elapsed_ms"]:,.0f} ms')
                 explanations = {
                     "understand": t("The model translated your request into a validated task spec. It did not grant permissions or run tools.", "Model chuyển câu hỏi thành task spec đã kiểm tra schema. Nó chưa cấp quyền hay chạy tool."),
                     "planner": t("The model proposed the next action. The executor will run only one dependency-safe, allowlisted action.", "Model đề xuất hành động tiếp. Executor chỉ chạy một hành động đúng thứ tự phụ thuộc và có trong allowlist."),
@@ -180,6 +198,7 @@ with workspace:
                             if col.button(label, key="decision-"+str(approved), type="primary" if approved else "secondary"):
                                 try:
                                     api(f"/runs/{rid}/approval", "POST", {"draft_hash": r["draft"]["hash"], "approved": approved, "continuous": True})
+                                    st.session_state["reset-inspection-" + rid] = True
                                     st.rerun(scope="fragment")
                                 except Exception as exc:
                                     st.error(str(exc))
