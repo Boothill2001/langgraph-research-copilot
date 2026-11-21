@@ -75,3 +75,18 @@ def test_background_initialization_error_is_visible_and_releases_run(client, mon
     assert result["status"] == "error"
     assert "credentials not configured" in result["state"]["error"]
     assert r["id"] not in api.active
+
+def test_pending_draft_inspection_invalidates_stale_sources(client,monkeypatch):
+    rid=api.store.create(USERS['researcher'],'Research','workflow')
+    draft=api.store.draft(rid,'Research','Source-backed report')
+    evidence=[{'chunk_id':1,'text':'old text','chunk_uid':'uid','generation':'a'*32}]
+    api.store.bind_evidence(rid,evidence,{})
+    api.store.update(rid,'awaiting_approval',{'run_id':rid,'evidence':evidence,'observations':[{'evidence':evidence}],'draft':draft})
+    api.store.approve(rid,USERS['reviewer'],draft['hash'],True)
+    monkeypatch.setattr('copilot.evidence.validate_refs',lambda *a:{'valid':False})
+    r=client.get('/runs/'+rid,headers=headers('researcher'))
+    assert r.status_code==200
+    data=r.json()
+    assert data['status']=='paused' and data['draft'] is None
+    assert data['state']['evidence']==[] and data['state']['observations']==[]
+    assert client.post('/runs/'+rid+'/approval',headers=headers('reviewer'),json={'draft_hash':draft['hash'],'approved':True}).status_code==409

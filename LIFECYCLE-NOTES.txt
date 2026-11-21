@@ -1,0 +1,15 @@
+RESEARCH COPILOT — LIFECYCLE IMPLEMENTATION NOTES
+
+UI: tab 06 Document Lifecycle; workspace.py + src/copilot/lifecycle_ui.py.
+User context: corpus, explicit revision, purchase_date are persisted outside model tool arguments.
+Guard: src/copilot/evidence.py calls the authenticated RAG validation API and fails closed on missing provenance/outage.
+Graph: before reuse and after planner output, invalid evidence clears evidence, observations, args, draft and approval.
+Drafts store evidence bindings. Save independently checks them. Old approvals are deleted after invalidation.
+Pending draft inspection and approval revalidate as well. A fresh run/draft needs new approval.
+Reports already committed remain historical audit. Historical events are never injected into the LLM context.
+Live proof: artifacts/lifecycle-live.json. Actual DeepSeek + MCP + embeddings + LangGraph SQLite.
+The live script is metered and changes synthetic fixtures: scripts/verify_lifecycle_live.py.
+Keyless tests: python -m pytest tests -q. CI does not call DeepSeek or download RAG weights.
+Historical task benchmark remains frozen and is not reassigned to this prompt/generation.
+Boundary: checks do not create a distributed transaction with the RAG registry or an external LLM. A pre-dispatched call cannot be recalled. A validation-to-report-commit race remains across services.
+No PDF ingestion; local authentication; no production traffic or business savings claim.

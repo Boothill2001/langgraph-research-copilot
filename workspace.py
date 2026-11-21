@@ -41,11 +41,13 @@ def api(path, method="GET", payload=None):
 
 
 st.sidebar.markdown("### " + t("Local demo identity", "Danh tính demo local"))
-username = st.sidebar.selectbox(t("Account", "Tài khoản"), ["researcher", "reviewer", "outsider"])
+username = st.sidebar.selectbox(t("Account", "Tài khoản"), ["researcher", "reviewer", "curator", "outsider"])
 password = st.sidebar.text_input(t("Demo password", "Mật khẩu demo"), value="learn-local-only", type="password")
 if st.sidebar.button(t("Sign in", "Đăng nhập"), width='stretch'):
     try:
         r = api("/login", "POST", {"username": username, "password": password})
+        st.session_state.pop("lc-result", None)
+        st.session_state.pop("lc-notice", None)
         st.session_state["token"], st.session_state["user"] = r["token"], r["user"]
         st.rerun()
     except Exception as exc:
@@ -57,7 +59,7 @@ if user:
 st.markdown('<div class="eyebrow">RESEARCH COPILOT / EXECUTION WORKBENCH</div>', unsafe_allow_html=True)
 st.title(t("From a question to an approved report.", "Từ câu hỏi đến báo cáo đã được duyệt."))
 st.markdown('<p class="lede">'+t("Execute one node. Inspect its data. Understand the next decision. A saved report is the result of evidence, calculation and explicit reviewer approval.", "Chạy một node, xem dữ liệu và hiểu quyết định kế tiếp. Báo cáo chỉ được lưu sau khi có bằng chứng, kết quả tính và reviewer duyệt nội dung.")+'</p>', unsafe_allow_html=True)
-workspace, data_tab, experiments, monitoring, guide = st.tabs([t("01 · Workspace", "01 · Thực hành"), t("02 · Data → index", "02 · Data → index"), t("03 · Experiments", "03 · Thí nghiệm"), t("04 · Monitoring", "04 · Theo dõi"), t("05 · Learn A–Z", "05 · Học A–Z")])
+workspace, data_tab, experiments, monitoring, guide, lifecycle_tab = st.tabs([t("01 · Workspace", "01 · Thực hành"), t("02 · Data → index", "02 · Data → index"), t("03 · Experiments", "03 · Thí nghiệm"), t("04 · Monitoring", "04 · Theo dõi"), t("05 · Learn A–Z", "05 · Học A–Z"), "06 · Document Lifecycle"])
 
 with workspace:
     mode = st.radio(t("Execution mode", "Chế độ thực thi"), ["Learn", "Run", "Replay"], horizontal=True)
@@ -80,9 +82,12 @@ with workspace:
         with st.expander(t("Create a real request", "Tạo request chạy thật"), expanded=not st.session_state.get("run_id")):
             request = st.text_area(t("Request", "Yêu cầu"), "Find how RRF combines rankings in source rrf, calculate 1/(60+1) + 1/(60+3), and save a short research report.", height=85)
             strategy = st.selectbox(t("Orchestrator", "Cách điều phối"), ["langgraph", "function_loop", "workflow"])
+            corpus = st.selectbox("Evidence corpus", ["technical", "policy"])
+            revision = st.text_input("Explicit evidence revision (optional)", "") or None
+            purchase_date = st.text_input("Purchase date for Policy Lab (YYYY-MM-DD)", "") or None
             if st.button(t("Create run", "Tạo lượt chạy"), type="primary"):
                 try:
-                    st.session_state["run_id"] = api("/runs", "POST", {"request": request, "strategy": strategy})["id"]
+                    st.session_state["run_id"] = api("/runs", "POST", {"request": request, "strategy": strategy, "corpus": corpus, "revision": revision, "purchase_date": purchase_date})["id"]
                     st.session_state.pop("selected_node", None)
                     st.rerun()
                 except Exception as exc:
@@ -225,16 +230,19 @@ with data_tab:
     manifest_path = ROOT.parent / "RAG_project/research-manifest.json"
     if manifest_path.exists():
         manifest = json.loads(manifest_path.read_text())
+        st.caption(t("Frozen benchmark snapshot below. The serving lifecycle generation is inspected separately; historical scores do not transfer to it.", "Bên dưới là snapshot benchmark cũ. Generation đang phục vụ được xem riêng; không gán điểm cũ cho nó."))
         a,b,c = st.columns(3)
         a.metric(t("Official documents", "Tài liệu chính thức"), len(manifest["official_sources"]))
-        b.metric(t("Indexed chunks", "Chunk đã index"), manifest["chunks"])
+        b.metric(t("Frozen snapshot chunks", "Chunk snapshot cũ"), manifest["chunks"])
         c.metric(t("Synthetic ACL / attack fixtures", "Fixture ACL / tấn công giả lập"), manifest["synthetic_documents"])
         st.dataframe([{k:v for k,v in s.items() if k in ("source_id", "url", "characters", "chunks", "content_sha256")} for s in manifest["official_sources"]], hide_index=True, width='stretch')
         st.caption(manifest["notice"])
         if user:
             response = requests.get(RAG+"/research/data", headers={"Authorization":"Bearer "+st.session_state["token"]}, timeout=10)
             if response.ok:
-                chunks = response.json()["chunks"]
+                runtime = response.json()
+                st.caption("Serving generation: " + runtime.get("generation", "unknown") + " · eligible technical chunks: " + str(len(runtime["chunks"])))
+                chunks = runtime["chunks"]
                 selected = st.selectbox(t("Inspect an authorized chunk", "Xem chunk được phép"), list(range(len(chunks))), format_func=lambda i:f'{chunks[i]["chunk_id"]} · {chunks[i]["source_id"]} · {chunks[i]["section"][:60]}')
                 st.json(chunks[selected])
                 st.caption(t("384-dimensional normalized embedding; actual index metadata, not an illustration.", "Embedding chuẩn hóa 384 chiều; metadata index thật, không phải minh họa."))
@@ -242,6 +250,7 @@ with data_tab:
         st.info("Run RAG_project/scripts/ingest_research.py to create the corpus.")
 
 with experiments:
+    st.info(t("Historical frozen benchmark — not a score for lifecycle generations or the current request prompt.", "Benchmark snapshot cũ — không phải điểm của generation hoặc prompt hiện tại."))
     st.subheader(t("Compare orchestration, not framework slogans.", "So sánh thực nghiệm, không dựa vào tên framework."))
     for title, path in [("Orchestration benchmark", ROOT / "artifacts/benchmark.json"), ("Retrieval ablation", ROOT.parent / "RAG_project/research-evaluation.json")]:
         st.markdown("### " + title)
@@ -276,3 +285,8 @@ with guide:
     for name,question,vi in steps:
         with st.expander(name): st.write(t(question,vi))
     st.caption(t("Read LEARNING-GUIDE.md for the full walkthrough. Keep answers and observed outputs in LEARNING-JOURNAL.txt.", "Đọc LEARNING-GUIDE.md để đi hết bài. Ghi câu trả lời và output quan sát được vào LEARNING-JOURNAL.txt."))
+
+
+with lifecycle_tab:
+    from copilot.lifecycle_ui import render
+    render(RAG, st.session_state.get("token", ""), user)

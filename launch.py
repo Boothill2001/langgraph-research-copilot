@@ -36,8 +36,9 @@ def launch(no_browser=False):
     if not (RAG / "data/research/chunks.json").exists():
         print("Preparing the real documentation corpus and local embedding index...", flush=True)
         python = RAG / ".venv/Scripts/python.exe" if os.name == "nt" else RAG / ".venv/bin/python"
-        subprocess.run([str(python), "scripts/ingest_research.py"], cwd=RAG, env=env, check=True)
-        subprocess.run([str(python), "scripts/evaluate_research.py"], cwd=RAG, env=env, check=True)
+        subprocess.run([str(python), "scripts/ingest_research.py", "--runtime-only"], cwd=RAG, env=env, check=True)
+    python = RAG / ".venv/Scripts/python.exe" if os.name == "nt" else RAG / ".venv/bin/python"
+    subprocess.run([str(python), "scripts/bootstrap_lifecycle.py"], cwd=RAG, env=env, check=True)
     for name, folder, args, url in services:
         if ready(url):
             print(name + " is ready.", flush=True)

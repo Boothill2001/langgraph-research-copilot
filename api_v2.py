@@ -59,13 +59,25 @@ def health():
 class NewRun(BaseModel):
     request: str = Field(min_length=3, max_length=2000)
     strategy: str = "langgraph"
+    corpus: str = "technical"
+    revision: str | None = None
+    purchase_date: str | None = None
 
 
 @app.post("/runs")
 def create(request: NewRun, user=Depends(principal)):
     if request.strategy not in ("langgraph", "function_loop", "workflow"):
         raise HTTPException(422, "Unknown strategy")
+    if request.corpus not in ("technical", "policy"):
+        raise HTTPException(422, "Unknown corpus")
+    if request.purchase_date:
+        from datetime import date
+        try:
+            date.fromisoformat(request.purchase_date)
+        except ValueError:
+            raise HTTPException(422, "Use an ISO purchase date")
     rid = store.create(user, request.request, request.strategy)
+    store.update(rid, "new", {"retrieval_context": {"corpus": request.corpus, "revision": request.revision, "purchase_date": request.purchase_date}})
     return store.run(rid)
 
 
@@ -78,11 +90,22 @@ def runs(user=Depends(principal)):
 
 
 @app.get("/runs/{rid}")
-def get_run(rid: str, user=Depends(principal)):
+async def get_run(rid: str, user=Depends(principal)):
     r = accessible(rid, user)
     if r["status"] == "running" and rid not in active:
         store.update(rid, "recoverable", r["state"])
         r = store.run(rid)
+    if r["status"] == "awaiting_approval" and r["state"].get("evidence"):
+        from copilot.evidence import validate_bound, state_evidence
+        checked = await asyncio.to_thread(validate_bound, state_evidence(r["state"]), r["owner"], r["state"].get("retrieval_context"))
+        if not checked.get("valid"):
+            cleared = Engine(store, provider=object()).stale({**r["state"], "run_id":rid})
+            if r["strategy"] == "langgraph":
+                from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
+                async with AsyncSqliteSaver.from_conn_string(str(store.root / "graph.sqlite")) as saver:
+                    await Engine(store, provider=object()).graph(saver).aupdate_state({"configurable":{"thread_id":rid}},cleared,as_node="planner")
+            store.update(rid,"paused",{**r["state"],**cleared,"next_node":"finish"})
+            r = store.run(rid)
     r["events"] = store.events(rid)
     r["draft"] = store.get_draft(rid)
     if rid in active:
@@ -149,6 +172,18 @@ async def approval(rid: str, request: Decision, user=Depends(principal)):
         return {"run_id": rid, "status": "completed", "note": "Already finalized; no repeated write"}
     if rid in active:
         raise HTTPException(409, "Run already processing")
+    evidence = r["state"].get("evidence", [])
+    if evidence:
+        from copilot.evidence import validate_bound, state_evidence
+        checked = await asyncio.to_thread(validate_bound, state_evidence(r["state"]), r["owner"], r["state"].get("retrieval_context"))
+        if not checked.get("valid"):
+            cleared = Engine(store, provider=object()).stale({**r["state"], "run_id": rid})
+            if r["strategy"] == "langgraph":
+                from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
+                async with AsyncSqliteSaver.from_conn_string(str(store.root / "graph.sqlite")) as saver:
+                    await Engine(store, provider=object()).graph(saver).aupdate_state({"configurable": {"thread_id": rid}}, cleared, as_node="planner")
+            store.update(rid, "paused", {**r["state"], **cleared, "next_node": "finish"})
+            raise HTTPException(409, "Evidence became stale; old draft and approval removed. Create a fresh run.")
     try:
         store.approve(rid, user, request.draft_hash, request.approved)
     except PermissionError as exc:
@@ -173,7 +208,7 @@ async def edit_draft(rid: str, request: DraftEdit, user=Depends(principal)):
     if r["strategy"] == "langgraph":
         from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
         async with AsyncSqliteSaver.from_conn_string(str(store.root / "graph.sqlite")) as saver:
-            await Engine(store).graph(saver).aupdate_state({"configurable": {"thread_id": rid}}, {"draft": draft})
+            await Engine(store, provider=object()).graph(saver).aupdate_state({"configurable": {"thread_id": rid}}, {"draft": draft})
     store.update(rid, "awaiting_approval", state)
     return {"draft": draft, "notice": "Previous approval invalidated; review this exact content again"}
 
@@ -189,7 +224,8 @@ def monitoring(user=Depends(principal)):
     outputs = [json.loads(e["output"]) for e in events]
     tool_outputs = [json.loads(e["output"]).get("observations", [])[-1] for e in events
                     if e["node"] == "tools" and json.loads(e["output"]).get("observations")]
-    metrics = {"evidence_rejections": sum(o.get("status") == "insufficient_evidence" for o in tool_outputs),
+    metrics = {"stale_evidence_blocks": sum(bool(o.get("evidence_invalid")) for o in outputs),
+               "evidence_rejections": sum(o.get("status") == "insufficient_evidence" for o in tool_outputs),
                "permission_denials": sum(o.get("status") == "forbidden" for o in tool_outputs),
                "approved": sum(bool(d["approved"]) for d in decisions), "rejected": sum(not d["approved"] for d in decisions),
                "node_errors": sum(bool(o.get("error")) and o.get("error") != "GraphInterrupt" for o in outputs),

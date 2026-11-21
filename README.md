@@ -8,6 +8,42 @@ This is a runnable, independent learning and portfolio project: a LangGraph agen
 
 ![A real request passes through inspectable nodes and stops for reviewer approval](assets/v2-workspace.png)
 
+## The document was valid when we searched. Is it valid when we write?
+
+A graph can pause for minutes or days. During that pause a source can be withdrawn or replaced. A durable checkpoint alone would faithfully restore stale text. This release adds a **live evidence eligibility boundary** before reuse, not just another metadata field.
+
+![Live Policy Lab: purchase date determines which version can become evidence](assets/lifecycle-policy.png)
+
+| Event | Actual system behavior | User-visible result |
+|---|---|---|
+| October purchase, November question | Backend selects the purchase-date interval | Old policy v1 is eligible; newer v2 is excluded before retrieval |
+| Curator publishes changed text | Validated immutable generation becomes active atomically | Next request sees new content without restarting |
+| Curator withdraws after search | Copilot validates before the next model use | Evidence and observations are removed; no stale model call |
+| Withdrawal while a model call is in flight | Validate again before exposing the planner output | Stale generated draft/answer is discarded |
+| Pending approved draft loses eligibility | Remove draft and recorded approval; validate again at save | No new report from the old approval |
+| Report was already saved | Preserve the canonical historical record | Audit remains intact; no automatic rewrite |
+
+**Measured local safety check:** two real runs used DeepSeek, MCP stdio, the RAG service and actual LangGraph SQLite checkpoints. The run paused after search stayed at **2 LLM calls before and after withdrawal/resume**. An already approved pending draft lost its approval. Both resumed runs finished with empty evidence/observations and **zero new reports**. [Live result](artifacts/lifecycle-live.json)
+
+This is a controlled operational check, not a production incident, business saving or new answer-quality benchmark. Policy Lab and lifecycle test sources are clearly synthetic; the original technical documentation remains real.
+
+![A curator manages published and withdrawn revisions; report review grants no source-publication rights](assets/lifecycle-curator.png)
+
+### Walk through it
+
+1. Open **06 · Document Lifecycle**, sign in as `researcher`, and run the old-purchase scenario. Inspect the exact exclusion reasons and chunk provenance.
+2. Try a missing purchase date and an explicit v2/October conflict: neither silently falls back to the latest policy.
+3. Sign in as `curator`. Refresh a source, publish a generation, change content and publish again. A `reviewer` cannot perform these operations.
+4. Withdraw the revision, then revalidate the earlier search output. A generation cache cannot override the current registry.
+5. For an agent run, use **Learn** and pause after search. Withdraw its source before the next node. Resume, inspect the cleared state and verify that no report was written.
+6. Create a **fresh run** after resolving the source/context, then create and review the new draft. An old approval cannot authorize it.
+
+Sources carry stable chunk UIDs, revisions, generations and retrieval context. The draft hash binds its evidence provenance as well as title, content and destination; identical prose from a different revision still needs a new approval. Every retained search observation is checked, not only the latest search response. The agent revalidates before node reuse and after planner calls; the save boundary independently revalidates the draft's stored evidence binding. Pending drafts are rechecked on inspection and approval. Historical events remain audit data and are not injected into the next model context. The backend supplies corpus/purchase date explicitly; the model does not choose a different business date.
+
+The companion registry checks authorization, publication and applicability **before both dense retrieval and BM25**. Publication uses a generation/registry-epoch compare-and-swap; current withdrawal state also wins after rollback. See the [RAG implementation and runtime evidence](https://github.com/Boothill2001/advanced-rag-hybrid-reranking#publication-and-withdrawal-solve-different-problems).
+
+[Implementation notes](LIFECYCLE-NOTES.txt) · [Vietnamese hands-on guide](LIFECYCLE-GUIDE.vi.txt)
+
 ## One request → inspectable decisions → one report
 
 > Find how RRF combines rankings in source rrf, calculate 1/(60+1) + 1/(60+3), and save a short research report.
@@ -57,7 +93,7 @@ LangGraph still uses function calling. It supplies explicit execution boundaries
 
 ## Real documents, clearly separated fixtures
 
-The corpus has **six official documentation pages and 113 chunks in total**, including **two explicitly synthetic chunks** for ACL and adversarial-instruction tests:
+The frozen benchmark corpus has **six official documentation pages and 113 chunks in total**, including **two explicitly synthetic chunks** for ACL and adversarial-instruction tests:
 
 - LangGraph: interrupts and persistence.
 - Model Context Protocol: architecture and tool specification.
@@ -139,7 +175,7 @@ The launcher checks readiness rather than sleeping a fixed interval. It prepares
 | Agent API | http://127.0.0.1:8529/docs |
 | Evidence API | http://127.0.0.1:8011/docs |
 
-Demo accounts: `researcher`, `reviewer`, `outsider`; shared development password `learn-local-only`. Override with `COPILOT_DEMO_PASSWORD`. These seeded accounts and signed tokens are a **loopback-only learning implementation, not enterprise SSO**. Do not expose the services publicly with default credentials.
+Demo accounts: `researcher`, `reviewer`, `curator`, `outsider`; shared development password `learn-local-only`. Override with `COPILOT_DEMO_PASSWORD`. These seeded accounts and signed tokens are a **loopback-only learning implementation, not enterprise SSO**. Do not expose the services publicly with default credentials.
 
 - **Learn:** Execute next node performs actual work once, then pauses. This educational pause is distinct from write approval.
 - **Follow latest execution:** Enabled by default, so new node output replaces the previous result. Node buttons intentionally open history; the interface labels historical views. Executing the next node returns to the live latest result.
@@ -166,6 +202,9 @@ API usage is recorded per call. A SQLite transaction reserves a conservative max
 .venv\Scripts\python.exe -m pytest tests -q
 .venv\Scripts\python.exe launch.py --no-browser
 
+# Live local lifecycle check: makes metered DeepSeek calls and withdraws a synthetic fixture.
+.venv\Scripts\python.exe scripts/verify_lifecycle_live.py
+
 # Paid real-provider experiments, within the local cumulative budget:
 .venv\Scripts\python.exe benchmark.py --pilot-only
 .venv\Scripts\python.exe benchmark.py
@@ -174,13 +213,16 @@ API usage is recorded per call. A SQLite transaction reserves a conservative max
 .venv\Scripts\python.exe regression_check.py
 ```
 
-The checked-in benchmark is a historical frozen baseline. For a new experiment, archive its artifacts, use an isolated `COPILOT_VAR` for measurement storage, and keep the shared signing-secret path identical in both services. Do not combine old checkpoint results with new prompts/code/corpus; protocol checks block incompatible reuse. Re-fetches of mutable documentation require a newly identified corpus and evaluation.
+The checked-in benchmark is a historical frozen baseline. It belongs to the original engine, prompt and corpus; it is not a score for lifecycle generations or the expanded prompt. Bootstrap and startup preserve its artifact bytes. For a new experiment, archive its artifacts, use an isolated `COPILOT_VAR` for measurement storage, and keep the shared signing-secret path identical in both services. Do not combine old checkpoint results with new prompts/code/corpus; protocol checks block incompatible reuse. Re-fetches of mutable documentation require a newly identified corpus and evaluation.
 
 The Windows `verify_live.py --restart-pid <owned-api-pid>` harness performs a real API process restart. It checks that the supplied PID belongs to the development API before stopping it; run it only against the development process you started. Unit/CI checks require no provider key and do not pretend to be live model evidence.
 
 CI tests policy boundaries, calculator limits, HTTP authorization, real LangGraph SQLite pause/resume, draft invalidation, budget reservations and crash-safe canonical writes. Neither CI nor screenshot generation silently re-runs paid experiments.
 
 ## Scope and next evidence
+
+Lifecycle checks are boundaries, not a distributed transaction across the RAG registry, external LLM and report database. A call already dispatched before withdrawal cannot be recalled; its result is checked before reuse/publication. There remains a validation-to-commit race between separate services; a stronger distributed release protocol is future work. Source builds are synchronous at this small corpus size. There is no PDF ingestion, automatic generation cleanup or enterprise identity provider. The legacy RAG `/ask` tutorial does **not** implement the new lifecycle/purchase-date rules.
+
 
 This is an independent, local research/learning project. It has no real employee SSO, public deployment, production traffic, business savings measurement or concept-drift detector. Local monitoring shows run outcomes, node latency, token usage and errors. Citation existence checks do not establish semantic entailment, the technical corpus is small, and the inspected task suite is no longer an untouched test set after debugging.
 

@@ -21,7 +21,7 @@ if not SECRET_FILE.exists():
         pass
 os.environ["COPILOT_SECRET_FILE"] = str(SECRET_FILE)
 
-USERS = {"researcher": {"sub": "researcher", "role": "researcher", "workspace": "research"},
+USERS = {"curator": {"sub": "curator", "role": "curator", "workspace": "research"},"researcher": {"sub": "researcher", "role": "researcher", "workspace": "research"},
          "reviewer": {"sub": "reviewer", "role": "reviewer", "workspace": "research"},
          "outsider": {"sub": "outsider", "role": "researcher", "workspace": "other"}}
 

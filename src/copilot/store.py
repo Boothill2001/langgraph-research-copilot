@@ -26,6 +26,7 @@ class Store:
               CREATE TABLE IF NOT EXISTS drafts(run_id TEXT PRIMARY KEY,title TEXT,content TEXT,hash TEXT);
               CREATE TABLE IF NOT EXISTS approvals(run_id TEXT PRIMARY KEY,draft_hash TEXT,reviewer TEXT,approved INTEGER,created REAL);
               CREATE TABLE IF NOT EXISTS reports(action_id TEXT PRIMARY KEY,run_id TEXT UNIQUE,report_id TEXT UNIQUE,title TEXT,content TEXT,draft_hash TEXT,created REAL);
+              CREATE TABLE IF NOT EXISTS evidence_bindings(run_id TEXT PRIMARY KEY,refs TEXT,context TEXT,stale INTEGER DEFAULT 0);
               CREATE TABLE IF NOT EXISTS api_calls(id TEXT PRIMARY KEY,run_id TEXT,status TEXT,reserved REAL,cost REAL,usage TEXT,created REAL);
             ''')
 
@@ -74,6 +75,9 @@ class Store:
 
     def draft(self, rid, title, content):
         value = {"title": title, "content": content, "destination": "reports/" + rid + ".md"}
+        binding = self.evidence_binding(rid)
+        if binding:
+            value["evidence_sha256"] = digest({"refs": json.loads(binding["refs"]), "context": json.loads(binding["context"])})
         hashed = digest(value)
         with self.db() as c:
             old = c.execute("SELECT hash FROM drafts WHERE run_id=?", (rid,)).fetchone()
@@ -100,6 +104,13 @@ class Store:
             c.execute("INSERT OR REPLACE INTO approvals VALUES(?,?,?,?,?)", (rid, draft_hash, user["sub"], int(approved), time.time()))
 
     def save(self, rid, user, crash_after_commit=False):
+        binding = self.evidence_binding(rid)
+        if binding:
+            from .evidence import validate_bound
+            checked = validate_bound(json.loads(binding["refs"]), user["sub"], json.loads(binding["context"]))
+            if binding["stale"] or not checked["valid"]:
+                self.invalidate_evidence(rid)
+                raise PermissionError("Evidence changed; retrieve, draft and approve again")
         action_id = rid + ":save:v1"
         run = self.run(rid)
         if user["sub"] != run["owner"] or user["workspace"] != run["workspace"]:
@@ -108,6 +119,12 @@ class Store:
             c.execute("BEGIN IMMEDIATE")
             d = c.execute("SELECT * FROM drafts WHERE run_id=?", (rid,)).fetchone()
             a = c.execute("SELECT * FROM approvals WHERE run_id=?", (rid,)).fetchone()
+            current_binding = c.execute("SELECT * FROM evidence_bindings WHERE run_id=?", (rid,)).fetchone()
+            if d and current_binding:
+                expected = {"title":d["title"],"content":d["content"],"destination":"reports/"+rid+".md",
+                            "evidence_sha256":digest({"refs":json.loads(current_binding["refs"]),"context":json.loads(current_binding["context"])})}
+                if current_binding["stale"] or digest(expected) != d["hash"]:
+                    raise PermissionError("Draft provenance changed; rebuild and approve the draft")
             if not d or not a or not a["approved"] or a["draft_hash"] != d["hash"]:
                 raise PermissionError("Exact draft has no valid approval")
             c.execute("INSERT OR IGNORE INTO reports VALUES(?,?,?,?,?,?,?)",
@@ -131,6 +148,25 @@ class Store:
                 temporary.unlink(missing_ok=True)
         return {"status": "saved", "report_id": rid, "action_id": action_id,
                 "draft_hash": report["draft_hash"], "path": str(path), "content": report["content"]}
+
+    def bind_evidence(self, rid, evidence, context):
+        refs, ctx = json.dumps(evidence), json.dumps(context)
+        with self.db() as c:
+            old = c.execute("SELECT * FROM evidence_bindings WHERE run_id=?", (rid,)).fetchone()
+            if old and (old["refs"] != refs or old["context"] != ctx):
+                c.execute("DELETE FROM approvals WHERE run_id=?", (rid,))
+            c.execute("INSERT OR REPLACE INTO evidence_bindings VALUES(?,?,?,0)", (rid, refs, ctx))
+
+    def evidence_binding(self, rid):
+        with self.db() as c:
+            row = c.execute("SELECT * FROM evidence_bindings WHERE run_id=?", (rid,)).fetchone()
+            return dict(row) if row else None
+
+    def invalidate_evidence(self, rid):
+        with self.db() as c:
+            c.execute("DELETE FROM approvals WHERE run_id=?", (rid,))
+            c.execute("DELETE FROM drafts WHERE run_id=?", (rid,))
+            c.execute("UPDATE evidence_bindings SET stale=1 WHERE run_id=?", (rid,))
 
     def reserve(self, rid, maximum, limit=5.):
         call_id = uuid.uuid4().hex

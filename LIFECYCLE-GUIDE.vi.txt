@@ -1,0 +1,26 @@
+HƯỚNG DẪN THỰC HÀNH — VÒNG ĐỜI EVIDENCE
+
+1. Mở start.bat, vào http://127.0.0.1:8530. Chọn tab 06 · Document Lifecycle.
+2. Đăng nhập researcher, mật khẩu mặc định learn-local-only.
+3. Chọn policy. Mua 25/10/2026, hỏi 21/11: v1 vào retrieval, v2 bị loại trước dense/BM25.
+4. Chuyển ngày mua 01/11: chỉ v2. Chọn Missing purchase date: needs_context và không evidence.
+5. Chọn Conflicting explicit revision: ngày mua tháng 10 nhưng yêu cầu v2 => context_conflict.
+6. Chọn curator và đăng nhập lại. Trong Source revisions & curator, tạo lifecycle-demo với nội dung giả lập.
+7. Refresh chỉ tạo revision staged. Chọn đúng revision rồi Build & publish generation.
+8. Đổi nội dung rồi lặp lại: active generation đổi, không restart service. Nội dung không đổi không sinh revision trùng.
+9. Researcher tìm ở corpus technical, Source ID là lifecycle-demo. Mở Actual retrieval trace / JSON.
+10. Curator withdraw revision. Quay lại kết quả cũ, bấm Revalidate this evidence now: stale, không được dùng tiếp.
+
+Phân biệt:
+- Withdraw: cấm dùng cho lần sử dụng mới, kể cả câu hỏi lịch sử.
+- Superseded: không còn mặc định; revision lịch sử rõ ràng vẫn có thể dùng.
+- Ngoài hiệu lực: policy không áp dụng cho ngày mua đang xét; không đồng nghĩa xóa khỏi kho.
+- Chunk UID: định danh nội dung trong revision. Generation: bộ file index nhất quán của request.
+- Registry: nguồn quyết định quyền/vòng đời hiện tại. Vector cache không có quyền cho tài liệu bị thu hồi quay lại.
+
+Trong Copilot, thử Learn từng node. Evidence được xác minh trước lần gọi LLM tiếp theo và sau planner, trước draft/approval/save/finish. Bị thu hồi thì xóa evidence, observations, draft và approval; cần một run mới lấy evidence mới và duyệt lại.
+Một request LLM đã gửi không thể thu hồi ngược. Kết quả phải được kiểm tra lại trước khi công bố.
+Báo cáo đã lưu là audit lịch sử, không tự viết lại. Log lịch sử không được tự đưa lại vào context LLM.
+
+Tự kiểm tra: vì sao v1 vẫn đúng dù hôm nay v2 mới nhất? Vì applicability dựa vào ngày mua.
+Giới hạn: đây là demo local, không có PDF ingestion hoặc traffic production. Điểm benchmark cũ chỉ thuộc snapshot cũ; Policy Lab chưa có benchmark chất lượng mới.

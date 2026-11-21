@@ -1,0 +1,21 @@
+{
+  "kind": "Live local integration; not a quality benchmark",
+  "created": 1795242283.8517396,
+  "source": "lifecycle-demo",
+  "revision": "r-ad042e0657f5",
+  "paused_after_search": {
+    "run_id": "0400da10bd3741e2a675ee23d54504a3",
+    "llm_calls_before_withdraw": 2,
+    "llm_calls_after_resume": 2,
+    "status": "completed",
+    "context_scrubbed": true
+  },
+  "approved_pending_draft": {
+    "run_id": "5b6c225ce9c141569b5b81e0381c703c",
+    "old_hash": "d06ab1eb95cc7c7809b5e1db5c659885048ba0f9cdce1cc1f275a8aca17a3072",
+    "status": "completed",
+    "approvals_remaining": 0
+  },
+  "new_reports": 0,
+  "runtime": "Actual LangGraph SQLite checkpoints + MCP stdio + DeepSeek + RAG service"
+}

@@ -16,6 +16,7 @@ from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from .evidence import validate_bound, state_evidence
 from .provider import Provider
 from .security import ROOT, USERS, issue
 from .store import Store
@@ -55,6 +56,8 @@ class State(TypedDict, total=False):
     saved: dict
     answer: str
     error: str
+    evidence_invalid: bool
+    retrieval_context: dict
     next_node: str
 
 
@@ -92,16 +95,23 @@ async def mcp_call(name, args, state):
 
 
 class Engine:
-    def __init__(self, store=None, provider=None, tool_call=None):
+    def __init__(self, store=None, provider=None, tool_call=None, evidence_validator=None):
         self.store = store or Store()
         self.provider = provider or Provider(self.store)
         self.tool_call = tool_call or mcp_call
+        self.evidence_validator = evidence_validator or validate_bound
 
     async def node(self, name, state):
         started = perf_counter()
         inputs = self.inputs(name, state)
         try:
-            result = await getattr(self, name)(state)
+            if name != "understand" and state_evidence(state) and not await self.evidence_valid(state):
+                result = self.stale(state)
+            else:
+                result = await getattr(self, name)(state)
+                # A dispatched model call cannot be recalled. Do not expose its stale result.
+                if name == "planner" and state_evidence(state) and not await self.evidence_valid(state):
+                    result = self.stale(state)
         except GraphInterrupt:
             self.store.event(state["run_id"], name, inputs, {"status": "awaiting_approval", "control_flow": "LangGraph interrupt; not a tool error"}, (perf_counter() - started) * 1000)
             raise
@@ -110,6 +120,16 @@ class Engine:
             raise
         self.store.event(state["run_id"], name, inputs, result, (perf_counter() - started) * 1000)
         return result
+
+    async def evidence_valid(self, s):
+        result = await asyncio.to_thread(self.evidence_validator, state_evidence(s), s["owner"], s.get("retrieval_context"))
+        return bool(result.get("valid"))
+
+    def stale(self, s):
+        self.store.invalidate_evidence(s["run_id"])
+        message = "Evidence is no longer eligible or cannot be verified. Retrieve fresh evidence, create a new draft and request approval again."
+        return {"evidence": [], "observations": [], "args": {"answer": message}, "draft": {}, "approval": False,
+                "answer": message, "action": "finish", "evidence_invalid": True}
 
     @staticmethod
     def inputs(name, s):
@@ -122,8 +142,8 @@ class Engine:
         prompt = ('Extract a bounded request spec as JSON only. Keys: query (search question), source_id (null unless explicitly named), '
                   'needs_search, needs_calculation, expression (copy exact arithmetic, null if unspecified), wants_report, clarification. '
                   'If calculation is requested but no expression/operands are supplied, ask for them in clarification. '
-                  'Do not add identity/role keys. Source IDs available: rrf, interrupts, persistence, mcp-architecture, mcp-tools, reranking, workspace-note, injection-fixture. '
-                  'Private project codename/budget questions refer to workspace-note. A single math-only question needs no search. '
+                  'Do not add identity/role keys. Explicit source IDs are open strings: copy the user source ID exactly, even if absent from the following examples. Never ask clarification just because a source is new; the search backend decides eligibility. Source ID examples: rrf, interrupts, persistence, mcp-architecture, mcp-tools, reranking, workspace-note, injection-fixture. '
+                  'Policy Lab uses source refund. Do not infer purchase dates; trusted backend context supplies them. Only unscoped private project codename/budget questions refer to workspace-note. A single math-only question needs no search. '
                   'For searches outside these sources still search; do not answer from memory.')
         response = await asyncio.to_thread(self.provider.call, s["run_id"], [{"role": "system", "content": prompt}, {"role": "user", "content": s["request"]}])
         spec = Spec.model_validate_json(response.content).model_dump()
@@ -135,7 +155,7 @@ class Engine:
             return {"action": "finish", "args": {"answer": spec["clarification"]}}
         if s.get("rounds", 0) >= 8:
             return {"action": "finish", "args": {"answer": "Tool-round limit reached; no unapproved write was performed."}}
-        if s.get("observations") and s["observations"][-1].get("status") in ("error", "forbidden", "insufficient_evidence"):
+        if s.get("observations") and s["observations"][-1].get("status") in ("error", "forbidden", "insufficient_evidence", "needs_context", "context_conflict", "registry_changed"):
             return {"action": "finish", "args": {"answer": "Cannot establish the requested source-backed result: " + s["observations"][-1]["status"] + ". No report was saved."}}
         if s["strategy"] == "workflow":
             if spec["needs_search"] and not s.get("evidence"):
@@ -178,11 +198,14 @@ class Engine:
         # A model cannot broaden an explicitly scoped user request.
         if s["action"] == "knowledge_search" and s["spec"].get("source_id"):
             args["source_id"] = s["spec"]["source_id"]
+        if s["action"] == "knowledge_search":
+            args.update(s.get("retrieval_context", {}))
         result = await self.tool_call(s["action"], args, s)
         observation = {"tool": s["action"], **result}
         update = {"observations": [*s.get("observations", []), observation], "rounds": s.get("rounds", 0) + 1}
         if s["action"] == "knowledge_search":
             update["evidence"] = result.get("evidence", [])
+            update["retrieval_context"] = result.get("trace", {}).get("context", s.get("retrieval_context", {}))
         else:
             update["calculation"] = result
         return update
@@ -205,6 +228,9 @@ class Engine:
             calc = s["calculation"]
             content += f'\n\n## Verified calculator output\n{calc["expression"]} = {calc["value"]:.12g}\n'
         content += "\n\n## Sources\n" + "\n".join(f'[{e["chunk_id"]}] {e.get("url") or "SYNTHETIC workspace fixture"}' for e in s.get("evidence", []) if str(e["chunk_id"]) in cited)
+        evidence = state_evidence(s)
+        if evidence:
+            self.store.bind_evidence(s["run_id"], evidence, s.get("retrieval_context") or evidence[0].get("retrieval_context", {}))
         return {"draft": self.store.draft(s["run_id"], title, content)}
 
     async def approval(self, s):
@@ -231,6 +257,8 @@ class Engine:
 
     @staticmethod
     def route(s, name):
+        if s.get("evidence_invalid"):
+            return END if name == "finish" else "finish"
         if name == "understand":
             return "planner"
         if name == "planner":
@@ -262,7 +290,7 @@ class Engine:
         run = self.store.run(rid)
         if run["status"] == "completed":
             return run
-        initial = {"run_id": rid, "request": run["request"], "owner": run["owner"], "strategy": run["strategy"]}
+        initial = {"retrieval_context": run["state"].get("retrieval_context", {}), "run_id": rid, "request": run["request"], "owner": run["owner"], "strategy": run["strategy"]}
         try:
             if run["strategy"] == "langgraph":
                 async with AsyncSqliteSaver.from_conn_string(str(self.store.root / "graph.sqlite")) as saver:

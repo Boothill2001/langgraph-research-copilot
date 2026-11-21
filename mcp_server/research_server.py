@@ -19,14 +19,14 @@ def identity():
 
 
 @mcp.tool()
-def knowledge_search(query: str, source_id: str | None = None) -> dict:
+def knowledge_search(query: str, source_id: str | None = None, corpus: str = "technical", revision: str | None = None, purchase_date: str | None = None) -> dict:
     """Search authorized documents; source_id narrows the source. No identity arguments."""
     identity()
     headers = {"Authorization": "Bearer " + os.environ["COPILOT_PRINCIPAL_TOKEN"]}
     for attempt in range(2):
         try:
             response = requests.post(os.getenv("RAG_API_URL", "http://127.0.0.1:8011") + "/search",
-                                     json={"query": query, "source_id": source_id}, headers=headers, timeout=(5, 40))
+                                     json={"query": query, "source_id": source_id, "corpus": corpus, "revision": revision, "purchase_date": purchase_date}, headers=headers, timeout=(5, 40))
             response.raise_for_status()
             return response.json()
         except (requests.Timeout, requests.ConnectionError):
@@ -46,7 +46,12 @@ def calculator(expression: str) -> dict:
 def save_report() -> dict:
     """Commit only the exact approved draft bound to this server's trusted run context."""
     principal = identity()
-    return Store().save(os.environ["COPILOT_RUN_ID"], principal)
+    store = Store()
+    rid = os.environ["COPILOT_RUN_ID"]
+    run = store.run(rid)
+    if run["state"].get("spec", {}).get("needs_search", True) and not store.evidence_binding(rid):
+        raise PermissionError("Legacy draft lacks verified provenance; create a fresh run")
+    return store.save(rid, principal)
 
 
 if __name__ == "__main__":

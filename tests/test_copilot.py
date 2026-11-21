@@ -15,6 +15,13 @@ from copilot.security import USERS, issue, verify
 from copilot.store import Store
 
 
+@pytest.fixture(autouse=True)
+def fake_evidence_validation(monkeypatch):
+    # These pre-existing orchestration tests use synthetic tool responses, not the RAG API.
+    monkeypatch.setattr("copilot.engine.validate_bound", lambda *a: {"valid": True})
+    monkeypatch.setattr("copilot.evidence.validate_refs", lambda *a: {"valid": True})
+
+
 def ready(store):
     rid = store.create(USERS["researcher"], "Find RRF, calculate 1+2, save a report")
     d = store.draft(rid, "RRF", "A cited report [1].")
